@@ -8,7 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
   const isInViewport = (el) => {
     const rect = el.getBoundingClientRect();
     const vh = window.innerHeight || document.documentElement.clientHeight;
-    return rect.top < vh && rect.bottom > 0;
+    const vw = window.innerWidth || document.documentElement.clientWidth;
+    return (
+      rect.bottom > 0 &&
+      rect.top < vh &&
+      rect.right > 0 &&
+      rect.left < vw
+    );
+  };
+
+  const revealIfInView = (obs) => {
+    reveals.forEach((el) => {
+      if (el.classList.contains("is-visible")) return;
+      if (!isInViewport(el)) return;
+      show(el);
+      if (obs) obs.unobserve(el);
+    });
   };
 
   if (!("IntersectionObserver" in window)) {
@@ -25,20 +40,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      threshold: 0.08,
-      rootMargin: "0px 0px 15% 0px",
+      threshold: 0,
+      rootMargin: "0px 0px 18% 0px",
     }
   );
 
   reveals.forEach((el) => observer.observe(el));
 
   requestAnimationFrame(() => {
-    reveals.forEach((el) => {
-      if (el.classList.contains("is-visible")) return;
-      if (isInViewport(el)) {
-        show(el);
-        observer.unobserve(el);
-      }
-    });
+    requestAnimationFrame(() => revealIfInView(observer));
   });
+
+  window.addEventListener(
+    "load",
+    () => revealIfInView(observer),
+    { once: true }
+  );
 });
