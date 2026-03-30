@@ -102,3 +102,88 @@ body {
   .button:hover svg {
     transform: translate(2px, -2px);
   }
+  /* =========================
+   CASES SECTION
+========================= */
+
+.cases {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+/* =========================
+   CASE HEADER
+========================= */
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.case-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: #EAEAEA;
+}
+
+.case-subtext {
+  font-size: 16px;
+  color: #A1A1A1;
+  margin-top: 8px;
+  max-width: 600px;
+  line-height: 1.4;
+}
+
+.case-year {
+  font-size: 14px;
+  color: #6F6F6F;
+  white-space: nowrap;
+}
+
+/* =========================
+   CASE CARD
+========================= */
+
+.case-card {
+  display: block;
+  margin-top: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.case-card img {
+  width: 100%;
+  display: block;
+}
+
+/* Hover эффект (очень важен 👇) */
+.case-card:hover {
+  transform: translateY(-6px);
+}
+
+/* =========================
+   COMING SOON
+========================= */
+
+.case-card.coming-soon {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+}
+
+.case-card.coming-soon span {
+  font-size: 16px;
+  color: #6F6F6F;
+}
