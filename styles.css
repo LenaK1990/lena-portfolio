@@ -123,7 +123,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 20px;
 }
 
 .case-title {
@@ -135,15 +134,15 @@ body {
 .case-subtext {
   font-size: 16px;
   color: #A1A1A1;
-  margin-top: 8px;
+  margin-top: 4px;
   line-height: 1.4;
   max-width: 600px;
 }
 
 .case-year {
   font-size: 16px;
-  color: #6F6F6F;
-  white-space: nowrap;
+  color: #A1A1A1;
+  margin-top: 22px;
 }
 
 /* =========================
