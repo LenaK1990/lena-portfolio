@@ -1,28 +1,21 @@
 document.addEventListener("DOMContentLoaded", () => {
   const reveals = document.querySelectorAll(".reveal");
+  const show = (el) => el.classList.add("is-visible");
 
-  const show = (el) => {
-    el.classList.add("is-visible");
-  };
+  let observer = null;
 
   const isInViewport = (el) => {
     const rect = el.getBoundingClientRect();
-    const vh = window.innerHeight || document.documentElement.clientHeight;
-    const vw = window.innerWidth || document.documentElement.clientWidth;
-    return (
-      rect.bottom > 0 &&
-      rect.top < vh &&
-      rect.right > 0 &&
-      rect.left < vw
-    );
+    return rect.top < window.innerHeight && rect.bottom > 0;
   };
 
-  const revealIfInView = (obs) => {
+  const revealIfInView = () => {
+    if (!observer) return;
     reveals.forEach((el) => {
       if (el.classList.contains("is-visible")) return;
       if (!isInViewport(el)) return;
       show(el);
-      if (obs) obs.unobserve(el);
+      observer.unobserve(el); // trigger once
     });
   };
 
@@ -31,29 +24,23 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
+  observer = new IntersectionObserver(
+    (entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         show(entry.target);
-        obs.unobserve(entry.target);
+        observer.unobserve(entry.target); // trigger once
       });
     },
     {
-      threshold: 0,
-      rootMargin: "0px 0px 18% 0px",
+      threshold: 0.01,
+      rootMargin: "0px 0px -12% 0px",
     }
   );
 
   reveals.forEach((el) => observer.observe(el));
 
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => revealIfInView(observer));
-  });
-
-  window.addEventListener(
-    "load",
-    () => revealIfInView(observer),
-    { once: true }
-  );
+  // Handle elements already visible on initial paint/load.
+  requestAnimationFrame(revealIfInView);
+  window.addEventListener("load", revealIfInView, { once: true });
 });

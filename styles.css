@@ -193,16 +193,18 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity var(--motion-duration) var(--motion-ease),
-    transform var(--motion-duration) var(--motion-ease);
+  transform: translateY(6px);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  transition:
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
