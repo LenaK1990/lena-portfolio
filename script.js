@@ -1,13 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const heroItems = document.querySelectorAll(".hero-reveal");
+  const revealItems = document.querySelectorAll(".project-reveal");
+
   // Page-load reveal for hero elements.
   requestAnimationFrame(() => {
-    document.body.classList.add("is-ready");
+    heroItems.forEach((item) => item.classList.add("is-visible"));
   });
 
-  const revealItems = document.querySelectorAll(".reveal");
-
   if (!("IntersectionObserver" in window)) {
-    revealItems.forEach((item) => item.classList.add("reveal-visible"));
+    revealItems.forEach((item) => item.classList.add("is-visible"));
     return;
   }
 
@@ -15,13 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("reveal-visible");
+        entry.target.classList.add("is-visible");
         obs.unobserve(entry.target); // trigger once
       });
     },
     {
-      threshold: 0.18,
-      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.12,
+      rootMargin: "0px 0px -12% 0px",
     }
   );
 

@@ -191,35 +191,21 @@ body {
   ANIMATIONS
 ========================= */
 
-.reveal-on-load {
-  opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity var(--motion-duration) var(--motion-ease),
-    transform var(--motion-duration) var(--motion-ease);
-  transition-delay: var(--stagger-delay, 0s);
-}
-
-body.is-ready .reveal-on-load {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .reveal {
   opacity: 0;
   transform: translateY(8px);
   transition:
     opacity var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
+  transition-delay: var(--reveal-delay, 0ms);
 }
 
-.reveal-visible {
+.reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal-on-load,
   .reveal {
     opacity: 1;
     transform: none;
