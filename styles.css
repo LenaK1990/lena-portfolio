@@ -127,7 +127,6 @@ body {
   font-weight: 500;
   color: #EAEAEA;
   margin: 0;
-  margin-bottom: 16px;
 }
 
 .case-row {
@@ -144,6 +143,7 @@ body {
   max-width: 600px;
   line-height: 1.4;
   margin: 0;
+  margin-top: 4px;
 }
 
 .case-year {
