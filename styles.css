@@ -113,13 +113,17 @@ body {
 }
 
 .case {
-  margin-bottom: 80px;
+  margin-bottom: 24px;
+}
+
+.case:last-child {
+  margin-bottom: 0;
 }
 
 /* HEADER */
 
 .case-header {
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .case-title {
