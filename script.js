@@ -1,14 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const heroItems = document.querySelectorAll(".hero-reveal");
-  const revealItems = document.querySelectorAll(".project-reveal");
+  const reveals = document.querySelectorAll(".reveal");
 
-  // Page-load reveal for hero elements.
-  requestAnimationFrame(() => {
-    heroItems.forEach((item) => item.classList.add("is-visible"));
-  });
+  const show = (el) => {
+    el.classList.add("is-visible");
+  };
+
+  const isInViewport = (el) => {
+    const rect = el.getBoundingClientRect();
+    const vh = window.innerHeight || document.documentElement.clientHeight;
+    return rect.top < vh && rect.bottom > 0;
+  };
 
   if (!("IntersectionObserver" in window)) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+    reveals.forEach(show);
     return;
   }
 
@@ -16,15 +20,25 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
-        obs.unobserve(entry.target); // trigger once
+        show(entry.target);
+        obs.unobserve(entry.target);
       });
     },
     {
-      threshold: 0.12,
-      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.08,
+      rootMargin: "0px 0px 15% 0px",
     }
   );
 
-  revealItems.forEach((item) => observer.observe(item));
+  reveals.forEach((el) => observer.observe(el));
+
+  requestAnimationFrame(() => {
+    reveals.forEach((el) => {
+      if (el.classList.contains("is-visible")) return;
+      if (isInViewport(el)) {
+        show(el);
+        observer.unobserve(el);
+      }
+    });
+  });
 });
