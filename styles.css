@@ -129,6 +129,12 @@ body {
   margin: 0;
 }
 
+.case-coming-soon {
+  font-size: 24px;      
+  font-weight: 400;     
+  color: #A1A1A1;       
+}
+
 .case-row {
   display: flex;
   justify-content: space-between;
