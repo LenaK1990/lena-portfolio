@@ -156,7 +156,7 @@ body {
 
 .case-card {
   display: block;
-  margin-top: 24px;
+  margin-top: 0;
   border-radius: 20px;
   overflow: hidden;
   background: #1F1F1F;
