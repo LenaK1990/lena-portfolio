@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.add("is-ready");
   });
 
-  const revealItems = document.querySelectorAll(".fade-in");
+  const revealItems = document.querySelectorAll(".reveal");
 
   if (!("IntersectionObserver" in window)) {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
+    revealItems.forEach((item) => item.classList.add("reveal-visible"));
     return;
   }
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     (entries, obs) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
-        entry.target.classList.add("is-visible");
+        entry.target.classList.add("reveal-visible");
         obs.unobserve(entry.target); // trigger once
       });
     },

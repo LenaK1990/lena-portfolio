@@ -7,7 +7,7 @@ body {
 
   /* subtle motion tokens */
   :root {
-    --motion-duration: 0.6s;
+    --motion-duration: 0.5s;
     --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
   
@@ -191,38 +191,36 @@ body {
   ANIMATIONS
 ========================= */
 
-.hero-load {
+.reveal-on-load {
   opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity 0.55s var(--motion-ease),
-    transform 0.55s var(--motion-ease);
-  transition-delay: var(--delay, 0s);
-}
-
-body.is-ready .hero-load {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(18px);
+  transform: translateY(10px);
   transition:
     opacity var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
-  will-change: opacity, transform;
+  transition-delay: var(--stagger-delay, 0s);
 }
 
-.fade-in.is-visible {
+body.is-ready .reveal-on-load {
   opacity: 1;
   transform: translateY(0);
-  will-change: auto;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-duration) var(--motion-ease),
+    transform var(--motion-duration) var(--motion-ease);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-load,
-  .fade-in {
+  .reveal-on-load,
+  .reveal {
     opacity: 1;
     transform: none;
     transition: none;
