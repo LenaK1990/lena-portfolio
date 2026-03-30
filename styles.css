@@ -7,7 +7,7 @@ body {
 
   /* subtle motion tokens */
   :root {
-    --motion-duration: 0.5s;
+    --motion-duration: 0.48s;
     --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
   }
   
@@ -193,7 +193,7 @@ body {
 
 .reveal-on-load {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(8px);
   transition:
     opacity var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
@@ -207,7 +207,7 @@ body.is-ready .reveal-on-load {
 
 .reveal {
   opacity: 0;
-  transform: translateY(12px);
+  transform: translateY(8px);
   transition:
     opacity var(--motion-duration) var(--motion-ease),
     transform var(--motion-duration) var(--motion-ease);
