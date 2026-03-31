@@ -1,3 +1,7 @@
+window.addEventListener("DOMContentLoaded", () => {
+  document.documentElement.classList.remove("preload");
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const heroElements = document.querySelectorAll(".hero .reveal");
   heroElements.forEach((el) => el.classList.add("is-visible"));
@@ -26,7 +30,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   );
 
-  setTimeout(() => {
-    reveals.forEach((el) => observer.observe(el));
-  }, 100);
+  reveals.forEach((el) => observer.observe(el));
 });
