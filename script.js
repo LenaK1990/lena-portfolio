@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const reveals = document.querySelectorAll(".reveal");
+  const heroElements = document.querySelectorAll(".hero .reveal");
+  heroElements.forEach((el) => el.classList.add("is-visible"));
+
+  const reveals = Array.from(document.querySelectorAll(".reveal")).filter(
+    (el) => !el.closest(".hero")
+  );
   const show = (el) => el.classList.add("is-visible");
 
   if (!("IntersectionObserver" in window)) {
