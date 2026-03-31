@@ -33,6 +33,7 @@ body {
     align-items: center;
     text-align: center;
     padding: 120px 20px;
+    animation: heroFade 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   }
   
   /* AVATAR */
@@ -172,6 +173,7 @@ body {
   border-radius: 20px;
   overflow: hidden;
   background: #1F1F1F;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .case-card img {
@@ -183,8 +185,7 @@ body {
 /* HOVER */
 
 .case-card:hover {
-  transform: none;
-  box-shadow: none;
+  transform: translateY(-4px) scale(1.01);
 }
 
 /* =========================
@@ -193,22 +194,29 @@ body {
 
 .reveal {
   opacity: 0;
-  transform: translateY(6px);
+  transform: translateY(24px) scale(0.98);
   will-change: transform, opacity;
   backface-visibility: hidden;
   transition-delay: var(--reveal-delay, 0ms);
 }
 
-.hero-reveal {
-  transform: translateY(10px);
-}
-
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0) scale(1);
   transition:
-    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroFade {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
