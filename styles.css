@@ -1,8 +1,22 @@
+:root {
+  /* Background */
+  --bg-primary: #0F0F0F;
+  --bg-button: rgba(255, 255, 255, 0.05);
+
+  /* Text */
+  --text-primary: #EAEAEA;
+  --text-secondary: rgba(255, 255, 255, 0.56);
+
+  /* subtle motion tokens */
+  --motion-duration: 0.48s;
+  --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
-    background: #0F0F0F;
-    color: #EAEAEA;
+    background: var(--bg-primary);
+    color: var(--text-primary);
   }
 
 body.preload .reveal {
@@ -10,12 +24,6 @@ body.preload .reveal {
   transform: translateY(12px) !important;
 }
 
-  /* subtle motion tokens */
-  :root {
-    --motion-duration: 0.48s;
-    --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  }
-  
   /* NAV */
   
   .nav {
@@ -71,7 +79,7 @@ body.preload .reveal {
     max-width: 456px;
     font-size: 16px;
     line-height: 1.2;
-    color: #A1A1A1;
+    color: var(--text-secondary);
     margin: 0 0 24px;
   }
   
@@ -91,8 +99,8 @@ body.preload .reveal {
     padding: 10px 16px;
     border-radius: 999px;
   
-    background: rgba(255, 255, 255, 0.05);
-    color: #EAEAEA;
+    background: var(--bg-button);
+    color: var(--text-primary);
   
     font-size: 16px;
     font-weight: 500;
@@ -139,14 +147,14 @@ body.preload .reveal {
 .case-title {
   font-size: 24px;
   font-weight: 500;
-  color: #EAEAEA;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .case-coming-soon {
   font-size: 16px;      
   font-weight: 400;     
-  color: #EAEAEA;       
+  color: var(--text-primary);       
 }
 
 .case-row {
@@ -159,7 +167,7 @@ body.preload .reveal {
 
 .case-subtext {
   font-size: 16px;
-  color: #A1A1A1;
+  color: var(--text-secondary);
   max-width: 600px;
   line-height: 1.4;
   margin: 0;
@@ -168,7 +176,7 @@ body.preload .reveal {
 
 .case-year {
   font-size: 16px;
-  color: #A1A1A1;
+  color: var(--text-secondary);
   white-space: nowrap;
 }
 
@@ -231,7 +239,7 @@ body.preload .reveal {
 .footer p {
   font-size: 14px;
   font-weight: 400;
-  color: #A1A1A1;
+  color: var(--text-secondary);
   margin: 0;
 }
 
