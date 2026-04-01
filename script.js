@@ -1,34 +1,34 @@
-window.addEventListener("DOMContentLoaded", () => {
-  document.documentElement.classList.remove("preload");
-});
-
 document.addEventListener("DOMContentLoaded", () => {
-  const heroElements = document.querySelectorAll(".hero .reveal");
-  heroElements.forEach((el) => el.classList.add("is-visible"));
+  requestAnimationFrame(() => {
+    document.body.classList.remove("preload");
+  });
 
-  const reveals = Array.from(document.querySelectorAll(".reveal")).filter(
-    (el) => !el.closest(".hero")
-  );
-  const show = (el) => el.classList.add("is-visible");
+  const heroItems = document.querySelectorAll(".hero .reveal");
+  heroItems.forEach((el, index) => {
+    el.style.setProperty("--reveal-delay", `${index * 80}ms`);
+  });
+
+  const reveals = document.querySelectorAll(".reveal");
 
   if (!("IntersectionObserver" in window)) {
-    reveals.forEach(show);
+    reveals.forEach((el) => el.classList.add("is-visible"));
     return;
   }
 
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        show(entry.target);
-        observer.unobserve(entry.target); // trigger once
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
       });
     },
     {
-      threshold: 0.25,
-      rootMargin: "0px 0px -8% 0px",
+      threshold: 0.1,
     }
   );
 
-  reveals.forEach((el) => observer.observe(el));
+  reveals.forEach((el) => {
+    observer.observe(el);
+  });
 });
