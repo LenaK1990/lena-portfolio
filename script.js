@@ -49,21 +49,4 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
-
-  if (document.body.classList.contains("has-sticky-nav")) {
-    const nav = document.querySelector(".nav");
-    if (!nav) return;
-
-    const threshold = 120;
-    const onScroll = () => {
-      if (window.scrollY > threshold) {
-        nav.classList.add("is-visible");
-      } else {
-        nav.classList.remove("is-visible");
-      }
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-  }
 });
