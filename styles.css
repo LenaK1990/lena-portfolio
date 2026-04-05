@@ -18,6 +18,7 @@
   --lh-tight: 1.15;
   --lh-heading: 1.25;
   --lh-normal: 1.2;
+  --lh-body: 1.4;
 
   /* subtle motion tokens */
   --motion-duration: 0.48s;
@@ -58,6 +59,14 @@ body {
   font-size: var(--text-small);
   font-weight: var(--weight-regular);
   line-height: var(--lh-normal);
+}
+
+p {
+  line-height: var(--lh-body);
+}
+
+p.text-body {
+  line-height: var(--lh-body);
 }
 
 body.preload .reveal {
@@ -117,6 +126,7 @@ body.preload .reveal {
     max-width: 456px;
     color: var(--text-secondary);
     margin: 0 0 24px;
+    line-height: var(--lh-body);
   }
   
   /* BUTTONS */
@@ -225,6 +235,7 @@ body.preload .reveal {
   max-width: 520px;
   margin: 0;
   margin-top: 4px;
+  line-height: var(--lh-body);
 }
 
 .case-year {
