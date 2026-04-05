@@ -35,7 +35,7 @@ body {
   font-family: var(--font-family);
   font-size: var(--text-hero);
   font-weight: var(--weight-regular);
-  line-height: var(--lh-heading);
+  line-height: 1.1;
 }
 
 .text-title {
@@ -198,12 +198,13 @@ body.preload .reveal {
   display: inline-block;
   font-size: var(--text-small);
   font-weight: var(--weight-regular);
-  padding: 4px 10px;
+
+  padding: 2px 8px;
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(4px);
+  border: none;
 
   color: var(--text-secondary);
 
