@@ -88,11 +88,12 @@ body.preload .reveal {
     align-items: center;
     padding: 0 48px;
     font-weight: var(--weight-regular);
-    background: rgba(15, 15, 15, 0.6);
+    background: rgba(10, 10, 10, 0.6);
     border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    transition: background 0.2s ease;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
   }
   
   .nav-logo {
