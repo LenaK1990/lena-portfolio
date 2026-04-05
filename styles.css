@@ -217,7 +217,8 @@ body.preload .reveal {
   padding: 10px 16px;
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(8px);
 
   color: var(--text-primary);
