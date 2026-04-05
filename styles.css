@@ -190,8 +190,10 @@ body.preload .reveal {
   margin: 0 0 14px;
 }
 
-.case-coming-soon {
-  color: var(--text-primary);       
+.case-status {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 6px 0 0;
 }
 
 .case-row {
