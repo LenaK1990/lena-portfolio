@@ -12,23 +12,41 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!("IntersectionObserver" in window)) {
     reveals.forEach((el) => el.classList.add("is-visible"));
-    return;
+  } else {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+          }
+        });
+      },
+      {
+        threshold: 0.1,
+      }
+    );
+
+    reveals.forEach((el) => {
+      observer.observe(el);
+    });
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    },
-    {
-      threshold: 0.1,
-    }
-  );
+  const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+  if (finePointer.matches) {
+    document.querySelectorAll(".case-card").forEach((card) => {
+      if (card.innerText.toLowerCase().includes("coming soon")) return;
 
-  reveals.forEach((el) => {
-    observer.observe(el);
-  });
+      const btn = card.querySelector(".case-hover-btn");
+      if (!btn) return;
+
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        btn.style.left = `${x}px`;
+        btn.style.top = `${y}px`;
+      });
+    });
+  }
 });

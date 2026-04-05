@@ -184,6 +184,7 @@ body.preload .reveal {
 
 .case-card {
   display: block;
+  position: relative;
   margin-top: 16px;
   border-radius: 20px;
   overflow: hidden;
@@ -199,8 +200,52 @@ body.preload .reveal {
 
 /* HOVER */
 
+.case-hover {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.case-hover-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 16px;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 500;
+
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.95);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    left 0.14s cubic-bezier(0.22, 1, 0.36, 1),
+    top 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-icon {
+  display: flex;
+}
+
 .case-card:hover {
   transform: translateY(-4px) scale(1.01);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .case-card:hover .case-hover-btn {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }
 
 /* =========================
