@@ -198,6 +198,11 @@ body.preload .reveal {
   display: block;
 }
 
+.case--disabled .case-card {
+  pointer-events: none;
+  cursor: default;
+}
+
 /* HOVER */
 
 .case-hover {
