@@ -309,11 +309,12 @@ body.preload .reveal {
   border-radius: 999px;
 
   background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: none;
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.95);
   font-size: 14px;
   font-weight: var(--weight-regular);
 
@@ -340,6 +341,7 @@ body.preload .reveal {
   .case-card:hover .case-hover-btn:hover {
     background: rgba(255, 255, 255, 0.12);
     transform: translate(-50%, calc(-50% - 1px)) scale(1);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
   }
 }
 
