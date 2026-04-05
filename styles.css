@@ -7,6 +7,17 @@
   --text-primary: #EAEAEA;
   --text-secondary: rgba(255, 255, 255, 0.56);
 
+  /* Typography */
+  --font-family: Inter, sans-serif;
+  --text-hero: 40px;
+  --text-title: 24px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --weight-medium: 500;
+  --weight-regular: 400;
+  --lh-tight: 1.15;
+  --lh-normal: 1.2;
+
   /* subtle motion tokens */
   --motion-duration: 0.48s;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -14,10 +25,38 @@
 
 body {
     margin: 0;
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-family);
     background: var(--bg-primary);
     color: var(--text-primary);
   }
+
+.text-hero {
+  font-family: var(--font-family);
+  font-size: var(--text-hero);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+}
+
+.text-title {
+  font-family: var(--font-family);
+  font-size: var(--text-title);
+  font-weight: var(--weight-medium);
+  line-height: var(--lh-tight);
+}
+
+.text-body {
+  font-family: var(--font-family);
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-normal);
+}
+
+.text-small {
+  font-family: var(--font-family);
+  font-size: var(--text-small);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-normal);
+}
 
 body.preload .reveal {
   opacity: 0 !important;
@@ -67,9 +106,6 @@ body.preload .reveal {
   
   h1 {
     max-width: 720px;
-    font-size: 40px;
-    line-height: 1.15;
-    font-weight: 500;
     margin: 0 0 24px;
   }
   
@@ -77,8 +113,6 @@ body.preload .reveal {
   
   .subtext {
     max-width: 456px;
-    font-size: 16px;
-    line-height: 1.2;
     color: var(--text-secondary);
     margin: 0 0 24px;
   }
@@ -102,8 +136,8 @@ body.preload .reveal {
     background: var(--bg-button);
     color: var(--text-primary);
   
-    font-size: 16px;
-    font-weight: 500;
+    font-size: var(--text-body);
+    font-weight: var(--weight-medium);
     text-decoration: none;
   
     transition: all 0.2s ease;
@@ -151,15 +185,11 @@ body.preload .reveal {
 }
 
 .case-title {
-  font-size: 24px;
-  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
 }
 
 .case-coming-soon {
-  font-size: 16px;      
-  font-weight: 400;     
   color: var(--text-primary);       
 }
 
@@ -172,16 +202,13 @@ body.preload .reveal {
 }
 
 .case-subtext {
-  font-size: 16px;
   color: var(--text-secondary);
   max-width: 600px;
-  line-height: 1.4;
   margin: 0;
   margin-top: 4px;
 }
 
 .case-year {
-  font-size: 16px;
   color: var(--text-secondary);
   white-space: nowrap;
 }
@@ -294,8 +321,6 @@ body.preload .reveal {
 }
 
 .footer p {
-  font-size: 14px;
-  font-weight: 400;
   color: var(--text-secondary);
   margin: 0;
 }
