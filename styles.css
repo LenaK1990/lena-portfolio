@@ -187,7 +187,7 @@ body.preload .reveal {
 
 .case-title {
   color: var(--text-primary);
-  margin: 0;
+  margin: 0 0 14px;
 }
 
 .case-coming-soon {
