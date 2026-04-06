@@ -88,16 +88,16 @@ body.preload .reveal {
     align-items: center;
     padding: 0 48px;
     font-weight: var(--weight-regular);
-    background: rgba(15, 15, 15, 0.55);
+    background: rgba(15, 15, 15, 0.35);
     border: none;
     box-shadow: none;
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-    transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: background 0.3s ease;
   }
 
   .nav.scrolled {
-    background: rgba(15, 15, 15, 0.6);
+    background: rgba(15, 15, 15, 0.4);
   }
 
   .nav::after {
@@ -105,11 +105,12 @@ body.preload .reveal {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -24px;
-    height: 24px;
+    bottom: -40px;
+    height: 40px;
     background: linear-gradient(
       to bottom,
-      rgba(15, 15, 15, 0.35),
+      rgba(15, 15, 15, 0.25),
+      rgba(15, 15, 15, 0.12),
       rgba(15, 15, 15, 0)
     );
     pointer-events: none;
