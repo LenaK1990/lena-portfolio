@@ -105,8 +105,8 @@ body.preload .reveal {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -24px;
-    height: 24px;
+    bottom: -20px;
+    height: 20px;
     background: linear-gradient(
       to bottom,
       rgba(15, 15, 15, 0.35),
@@ -313,6 +313,7 @@ body.preload .reveal {
 
 /* CARD */
 
+/* CTA mockup card: DOM is a.case-card > img + .case-hover > span.case-hover-btn (text "View project") — not a ::after */
 .case-card {
   display: block;
   position: relative;
@@ -324,9 +325,15 @@ body.preload .reveal {
   transition: transform 0.2s ease;
 }
 
+/* Only the link card (with CTA): never dim via parent opacity. div.case-card.reveal keeps scroll fade. */
+a.case-card,
+a.case-card:hover {
+  opacity: 1 !important;
+}
+
 .case-card img {
   position: relative;
-  z-index: 0;
+  z-index: 1;
   width: 100%;
   height: auto;
   display: block;
@@ -347,10 +354,10 @@ body.preload .reveal {
   pointer-events: none;
 }
 
-/* "View project" — DOM uses span.case-hover-btn (no .view-project); absolute keeps cursor-follow JS working */
+/* View project control: span.case-hover-btn (requires position:absolute + left/top for script.js cursor follow) */
 .case-card .case-hover-btn {
   position: absolute;
-  z-index: 10;
+  z-index: 3;
   left: 50%;
   top: 50%;
   display: inline-flex;
