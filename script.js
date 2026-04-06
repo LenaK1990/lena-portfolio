@@ -1,4 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+  if (typeof console !== "undefined" && console.log) {
+    const navEl = document.querySelector("nav.nav");
+    const ctaEl = document.querySelector(
+      ".case:not(.case--disabled) > a.case-card .case-hover-btn"
+    );
+    console.log(
+      "[lena-portfolio] Navbar selector: nav.nav",
+      navEl ?? "(not found)"
+    );
+    console.log(
+      "[lena-portfolio] View project CTA: .case:not(.case--disabled) > a.case-card .case-hover .case-hover-btn",
+      ctaEl ?? "(not found)"
+    );
+  }
+
   requestAnimationFrame(() => {
     document.body.classList.remove("preload");
   });
