@@ -90,10 +90,10 @@ body.preload .reveal {
     font-weight: var(--weight-regular);
     background: rgba(15, 15, 15, 0.5);
     border: none;
-    box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
+    box-shadow: none;
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
-    transition: background 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+    transition: background 0.3s ease, backdrop-filter 0.3s ease;
   }
 
   .nav.scrolled {
@@ -316,6 +316,7 @@ body.preload .reveal {
 .case-card {
   display: block;
   position: relative;
+  z-index: 1;
   margin-top: 16px;
   border-radius: 20px;
   overflow: hidden;
@@ -341,15 +342,15 @@ body.preload .reveal {
 .case-hover {
   position: absolute;
   inset: 0;
-  z-index: 10;
+  z-index: 2;
   opacity: 1;
   pointer-events: none;
 }
 
-/* "View project" — span.case-hover-btn (cursor JS requires position: absolute + left/top) */
-.case-hover-btn {
+/* "View project" — DOM uses span.case-hover-btn (no .view-project); absolute keeps cursor-follow JS working */
+.case-card .case-hover-btn {
   position: absolute;
-  z-index: 20;
+  z-index: 10;
   left: 50%;
   top: 50%;
   display: inline-flex;
@@ -369,10 +370,10 @@ body.preload .reveal {
   font-size: 14px;
   font-weight: var(--weight-regular);
 
-  opacity: 1;
-  visibility: hidden;
-  transform: translate(-50%, -50%) scale(0.96);
-  pointer-events: none;
+  opacity: 1 !important;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
   transition: transform 0.2s ease, background 0.2s ease,
     backdrop-filter 0.2s ease, -webkit-backdrop-filter 0.2s ease,
     box-shadow 0.2s ease,
@@ -389,26 +390,10 @@ body.preload .reveal {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .case-card:hover .case-hover-btn {
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-  }
-
   .case-card:hover .case-hover-btn:hover {
     background: rgba(255, 255, 255, 0.24);
     transform: translate(-50%, calc(-50% - 1px)) scale(1);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  }
-}
-
-/* Touch / coarse pointer: hover media would keep CTA hidden forever */
-@media (hover: none), (pointer: coarse) {
-  .case:not(.case--disabled) > a.case-card .case-hover .case-hover-btn {
-    visibility: visible;
-    pointer-events: auto;
-    transform: translate(-50%, -50%) scale(1);
-    opacity: 1;
   }
 }
 
@@ -449,27 +434,3 @@ body.preload .reveal {
   color: var(--text-secondary);
   margin: 0;
 }
-
-/* High-specificity: actual DOM is <nav class="nav"> and span.case-hover-btn inside a.case-card */
-body > nav.nav {
-  background: rgba(15, 15, 15, 0.5);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: none;
-  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.04);
-}
-
-body > nav.nav.scrolled {
-  background: rgba(15, 15, 15, 0.6);
-}
-
-.case:not(.case--disabled) > a.case-card .case-hover span.case-hover-btn {
-  background: rgba(255, 255, 255, 0.18);
-  color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  border: none;
-  opacity: 1;
-}
-

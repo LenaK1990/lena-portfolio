@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navEl ?? "(not found)"
     );
     console.log(
-      "[lena-portfolio] View project CTA: .case:not(.case--disabled) > a.case-card .case-hover .case-hover-btn",
+      "[lena-portfolio] View project CTA: .case-card .case-hover-btn (span; there is no .view-project in DOM)",
       ctaEl ?? "(not found)"
     );
   }
