@@ -49,4 +49,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   }
+
+  const navEl = document.querySelector(".nav");
+  if (navEl) {
+    const syncNavScroll = () => {
+      navEl.classList.toggle("scrolled", window.scrollY > 8);
+    };
+    window.addEventListener("scroll", syncNavScroll, { passive: true });
+    syncNavScroll();
+  }
 });
