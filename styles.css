@@ -226,6 +226,77 @@ body.preload .reveal {
   padding: 68px 20px 80px;
 }
 
+/* Case study page hero (scoped — homepage also uses .hero) */
+.case-page .hero {
+  display: block;
+  text-align: left;
+  padding: 0;
+}
+
+.case-page .hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 64px;
+}
+
+.case-page .hero-left > * {
+  margin: 0;
+}
+
+.case-page .hero-left > * + * {
+  margin-top: 16px;
+}
+
+.case-page .hero-left > .text-title + .text-body {
+  margin-top: 24px;
+}
+
+.case-page .hero-left > .text-small {
+  color: var(--text-secondary);
+}
+
+.case-page .hero-left .text-title {
+  margin: 0;
+  max-width: none;
+}
+
+.case-page .hero-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.case-page .meta-block p {
+  margin: 0;
+}
+
+.case-page .meta-block p + p {
+  margin-top: 8px;
+}
+
+.case-page .meta-block + .meta-block {
+  margin-top: 32px;
+}
+
+.case-page .hero-image {
+  margin-top: 64px;
+  width: 100%;
+  height: 420px;
+  border-radius: 16px;
+  background: linear-gradient(
+    165deg,
+    rgba(40, 40, 40, 0.95) 0%,
+    rgba(18, 18, 18, 1) 45%,
+    rgba(12, 12, 12, 1) 100%
+  );
+}
+
+@media (max-width: 900px) {
+  .case-page .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
 .case-cta {
   display: inline-flex;
   align-items: center;
