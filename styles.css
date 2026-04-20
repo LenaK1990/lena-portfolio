@@ -413,7 +413,7 @@ body.preload .reveal {
 
 .case-card:hover {
   opacity: 1 !important;
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-4px);
 }
 
 /* CTA stack only — not .case * (would break .reveal in .case-header) */
@@ -452,6 +452,7 @@ a.case-card .case-hover-btn {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  transform-origin: center center;
   display: inline-flex;
   align-items: center;
   gap: 8px;
