@@ -470,9 +470,11 @@ a.case-card .case-hover-btn {
   background: #2a2a2a;
   color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
-  transition: background 0.25s ease, box-shadow 0.25s ease,
-    left 0.14s cubic-bezier(0.22, 1, 0.36, 1),
-    top 0.14s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
+}
+
+a.case-card:hover .case-hover-btn {
+  transform: translate(-50%, -50%) scale(1.04);
 }
 
 .btn-icon {
