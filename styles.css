@@ -293,11 +293,11 @@ body.preload .reveal {
   height: 640px;
   border-radius: 20px;
 
+  background-color: #161616;
   background-image: url("irm-hero.jpg");
   background-size: cover;
-  background-position: center 40%;
+  background-position: center;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 120px rgba(0, 0, 0, 0.35);
 }
 
 @media (max-width: 1100px) {
