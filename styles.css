@@ -247,8 +247,8 @@ body.preload .reveal {
 
 .case-page .hero-grid {
   display: grid;
-  grid-template-columns: 640px 300px;
-  gap: 120px;
+  grid-template-columns: 560px 300px;
+  gap: 140px;
   align-items: start;
 }
 
