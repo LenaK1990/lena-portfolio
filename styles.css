@@ -309,7 +309,7 @@ body.preload .reveal {
 }
 
 .case-content {
-  max-width: 640px;
+  max-width: 520px;
   display: flex;
   flex-direction: column;
 }
@@ -332,7 +332,7 @@ body.preload .reveal {
 }
 
 .case-content .text-body + .text-title {
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 @media (max-width: 1100px) {
