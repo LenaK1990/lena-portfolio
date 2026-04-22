@@ -346,6 +346,30 @@ body.preload .reveal {
   margin-top: 8px;
 }
 
+.case-hypotheses {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.hypothesis-card {
+  background: #161616;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.hypothesis-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 800px) {
+  .case-hypotheses {
+    grid-template-columns: 1fr;
+  }
+}
+
 .case-label {
   margin-top: 56px;
   margin-bottom: 24px;
