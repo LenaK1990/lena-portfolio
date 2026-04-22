@@ -357,8 +357,8 @@ body.preload .reveal {
 .hypothesis-card {
   background: #161616;
   border-radius: 20px;
-  padding: 28px;
-  min-height: 200px;
+  padding: 32px 28px;
+  min-height: 220px;
 }
 
 .hypothesis-card h3 {
@@ -366,7 +366,7 @@ body.preload .reveal {
   font-size: var(--text-body);
   font-weight: 500;
   margin-top: 0;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .hypothesis-card p {
