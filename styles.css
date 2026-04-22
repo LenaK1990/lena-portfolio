@@ -336,7 +336,7 @@ body.preload .reveal {
 }
 
 .case-list {
-  margin-top: 8px;
+  margin-top: 4px;
   padding-left: 18px;
   color: var(--text-secondary);
   line-height: var(--lh-body);
