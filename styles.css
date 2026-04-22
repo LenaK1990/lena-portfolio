@@ -304,6 +304,37 @@ body.preload .reveal {
   background-repeat: no-repeat;
 }
 
+.case-section {
+  margin-top: 80px;
+}
+
+.case-content {
+  max-width: 640px;
+  display: flex;
+  flex-direction: column;
+}
+
+.case-content .text-title {
+  margin: 0 0 16px;
+}
+
+.case-content .text-body {
+  margin: 0;
+  color: var(--text-secondary);
+}
+
+.case-content .text-body + .text-body {
+  margin-top: 12px;
+}
+
+.case-content .text-title + .text-body {
+  margin-top: 0;
+}
+
+.case-content .text-body + .text-title {
+  margin-top: 32px;
+}
+
 @media (max-width: 1100px) {
   .case-page .hero-grid {
     grid-template-columns: 1fr;
