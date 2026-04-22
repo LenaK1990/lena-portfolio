@@ -348,7 +348,7 @@ body.preload .reveal {
 
 .case-hypotheses {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 56px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
@@ -358,6 +358,7 @@ body.preload .reveal {
   background: #161616;
   border-radius: 20px;
   padding: 28px;
+  min-height: 200px;
 }
 
 .hypothesis-card h3 {
