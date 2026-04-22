@@ -258,6 +258,10 @@ body.preload .reveal {
   gap: 16px;
 }
 
+.case-page .hero-left .text-small {
+  margin-bottom: 12px;
+}
+
 .case-page .hero-left .text-title {
   max-width: none;
 }
@@ -280,7 +284,7 @@ body.preload .reveal {
 
 .case-page .meta-block .text-small {
   opacity: 0.6;
-  margin-bottom: 6px;
+  margin-bottom: 10px;
 }
 
 .case-page .meta-block .text-body + .text-body {
