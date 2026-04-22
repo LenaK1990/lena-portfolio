@@ -309,7 +309,7 @@ body.preload .reveal {
 }
 
 .case-content {
-  max-width: 520px;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
 }
