@@ -339,6 +339,31 @@ body.preload .reveal {
   margin-top: 40px;
 }
 
+.case-content .text-title + .case-subtext {
+  margin-top: 16px;
+}
+
+.section-subheading {
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--text-body);
+  font-weight: 500;
+  line-height: var(--lh-heading);
+  margin: 0 0 12px;
+}
+
+.case-content .case-subtext + .section-subheading {
+  margin-top: 32px;
+}
+
+.case-content .case-list + .section-subheading {
+  margin-top: 24px;
+}
+
+.case-content .section-subheading + .case-list {
+  margin-top: 0;
+}
+
 .case-list {
   margin-top: 4px;
   padding-left: 18px;
@@ -348,6 +373,11 @@ body.preload .reveal {
 
 .case-list li + li {
   margin-top: 8px;
+}
+
+.case-content .case-list li {
+  font-size: var(--text-body);
+  font-weight: var(--weight-regular);
 }
 
 .case-hypotheses {
