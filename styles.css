@@ -292,7 +292,7 @@ body.preload .reveal {
 }
 
 .case-page .hero-image {
-  margin-top: 64px;
+  margin-top: 40px;
   width: 100%;
   height: 640px;
   border-radius: 20px;
@@ -305,17 +305,18 @@ body.preload .reveal {
 }
 
 .case-section {
-  margin-top: 80px;
-}
-
-.case-section + .case-section {
-  margin-top: 64px;
+  margin-top: 72px;
 }
 
 .case-content {
-  max-width: 680px;
+  max-width: 960px;
   display: flex;
   flex-direction: column;
+}
+
+.case-content p:not(.section-subheading),
+.case-content li {
+  line-height: 1.6;
 }
 
 .case-content .text-title {
@@ -340,7 +341,7 @@ body.preload .reveal {
 }
 
 .case-content .text-title + .case-subtext {
-  margin-top: 16px;
+  margin-top: 0;
 }
 
 .section-subheading {
@@ -353,11 +354,11 @@ body.preload .reveal {
 }
 
 .case-content .case-subtext + .section-subheading {
-  margin-top: 32px;
+  margin-top: 40px;
 }
 
 .case-content .case-list + .section-subheading {
-  margin-top: 24px;
+  margin-top: 40px;
 }
 
 .case-content .section-subheading + .case-list {
@@ -368,7 +369,6 @@ body.preload .reveal {
   margin-top: 4px;
   padding-left: 18px;
   color: var(--text-secondary);
-  line-height: var(--lh-body);
 }
 
 .case-list li + li {
@@ -382,10 +382,10 @@ body.preload .reveal {
 
 .case-hypotheses {
   width: 100%;
-  margin-top: 48px;
+  margin-top: 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 16px;
   align-items: stretch;
 }
 
@@ -417,7 +417,7 @@ body.preload .reveal {
   margin: 0;
   color: var(--text-secondary);
   font-weight: 400;
-  line-height: var(--lh-body);
+  line-height: 1.6;
   text-align: left;
 }
 
@@ -428,7 +428,7 @@ body.preload .reveal {
 }
 
 .case-label {
-  margin-top: 56px;
+  margin-top: 40px;
   margin-bottom: 24px;
 }
 
