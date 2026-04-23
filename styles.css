@@ -348,28 +348,31 @@ body.preload .reveal {
 
 .case-hypotheses {
   width: 100%;
-  margin-top: 56px;
+  margin-top: 48px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 20px;
 }
 
 .hypothesis-card {
   background: #161616;
   border-radius: 20px;
-  padding: 32px 28px;
-  min-height: 220px;
+  padding: 32px 40px 40px;
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .hypothesis-card h3 {
   color: var(--text-primary);
   font-size: var(--text-body);
   font-weight: 500;
-  margin-top: 0;
-  margin-bottom: 16px;
+  margin: 0;
 }
 
 .hypothesis-card p {
+  max-width: 420px;
   margin: 0;
   color: var(--text-secondary);
   font-weight: 400;
