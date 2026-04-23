@@ -67,6 +67,14 @@ body {
 
 p {
   line-height: var(--lh-body);
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
 }
 
 p.text-body {
@@ -242,6 +250,10 @@ body.preload .reveal {
 }
 
 .case-page .hero h1 {
+  max-width: none;
+}
+
+.case-page .hero h1 {
   margin: 0;
 }
 
@@ -263,7 +275,7 @@ body.preload .reveal {
 }
 
 .hero-text {
-  max-width: 640px;
+  max-width: 800px;
 }
 
 .case-page .hero-right {
@@ -309,6 +321,19 @@ body.preload .reveal {
   margin-top: 72px;
 }
 
+.case-block + .case-block {
+  margin-top: 72px;
+}
+
+.case-content + .case-block,
+.case-content + .case-hypotheses {
+  margin-top: 40px;
+}
+
+.case-block + .case-hypotheses {
+  margin-top: 40px;
+}
+
 .case-content {
   max-width: 960px;
   display: flex;
@@ -325,7 +350,7 @@ body.preload .reveal {
 
 .case-content p,
 .case-content ul {
-  max-width: 720px;
+  max-width: 800px;
 }
 
 .case-content .text-title {
@@ -333,19 +358,24 @@ body.preload .reveal {
 }
 
 .case-content .text-body {
-  margin: 0;
+  margin: 0 0 16px;
   color: var(--text-secondary);
 }
 
 .case-content .case-subtext {
-  margin: 0;
+  margin: 0 0 16px;
   color: var(--text-secondary);
 }
 
 .case-content .text-body + .text-body,
 .case-content .case-subtext + .text-body,
 .case-content .text-body + .case-subtext {
-  margin-top: 16px;
+  margin-top: 0;
+}
+
+.case-content .text-body:has(+ .text-title),
+.case-content .case-subtext:has(+ .text-title) {
+  margin-bottom: 0;
 }
 
 .case-content .text-title + .text-body,
@@ -354,7 +384,12 @@ body.preload .reveal {
 }
 
 .case-content .text-body + .text-title {
-  margin-top: 16px;
+  margin-top: 72px;
+}
+
+.case-content:has(+ .case-block) > :last-child,
+.case-content:has(+ .case-hypotheses) > :last-child {
+  margin-bottom: 0;
 }
 
 .section-subheading {
@@ -364,6 +399,10 @@ body.preload .reveal {
   font-weight: 500;
   line-height: var(--lh-heading);
   margin: 0 0 16px;
+}
+
+.case-content .case-subtext:has(+ .section-subheading) {
+  margin-bottom: 0;
 }
 
 .case-content .case-subtext + .section-subheading {
@@ -402,7 +441,7 @@ body.preload .reveal {
 
 .case-hypotheses {
   width: 100%;
-  margin-top: 40px;
+  margin-top: 0;
   margin-bottom: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -449,7 +488,7 @@ body.preload .reveal {
 }
 
 .case-label {
-  margin-top: 40px;
+  margin-top: 0;
   margin-bottom: 16px;
 }
 
@@ -553,10 +592,6 @@ body.preload .reveal {
   margin: 0;
   margin-top: 4px;
   line-height: var(--lh-body);
-}
-
-.cases .case-subtext {
-  max-width: 520px;
 }
 
 .case-year {
