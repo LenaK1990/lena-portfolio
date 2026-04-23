@@ -308,6 +308,10 @@ body.preload .reveal {
   margin-top: 80px;
 }
 
+.case-section + .case-section {
+  margin-top: 40px;
+}
+
 .case-content {
   max-width: 640px;
   display: flex;
@@ -352,13 +356,14 @@ body.preload .reveal {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: stretch;
 }
 
 .hypothesis-card {
   background: #161616;
   border-radius: 20px;
-  padding: 32px 40px 40px;
-  min-height: 260px;
+  padding: 32px 40px 32px;
+  min-height: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
