@@ -309,11 +309,11 @@ body.preload .reveal {
 }
 
 .case-section + .case-section {
-  margin-top: 40px;
+  margin-top: 64px;
 }
 
 .case-content {
-  max-width: 640px;
+  max-width: 680px;
   display: flex;
   flex-direction: column;
 }
