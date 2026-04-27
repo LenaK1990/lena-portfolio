@@ -394,7 +394,8 @@ body.preload .reveal {
 }
 
 .case-content:has(+ .case-block) > :last-child,
-.case-content:has(+ .case-hypotheses) > :last-child {
+.case-content:has(+ .case-hypotheses) > :last-child,
+.case-content:has(+ .case-cards) > :last-child {
   margin-bottom: 0;
 }
 
@@ -491,6 +492,98 @@ body.preload .reveal {
 
 @media (max-width: 900px) {
   .case-hypotheses {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Comparison cards (e.g. Rejected vs Selected alternatives).
+   Scoped under .case-cards to avoid clashing with the homepage .case-card tile
+   and the homepage .case-badge. */
+.case-cards {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.case-content + .case-cards {
+  margin-top: 24px;
+}
+
+.case-cards .case-card {
+  height: 640px;
+  margin: 0;
+  padding: 24px;
+  background-color: #161616;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  transition: none;
+}
+
+.case-cards .case-card:hover {
+  transform: none;
+}
+
+.case-card-content {
+  max-width: 420px;
+}
+
+.case-card-title {
+  margin: 0 0 12px;
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: var(--text-title);
+  font-weight: var(--weight-regular);
+  line-height: var(--lh-heading);
+}
+
+.case-cards .case-card .case-subtext {
+  margin: 0 0 16px;
+  color: var(--text-secondary);
+  line-height: var(--lh-body);
+}
+
+.case-cards .case-card .case-badge {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: none;
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: var(--weight-regular);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.case-cards .case-card .case-badge.rejected {
+  opacity: 0.6;
+}
+
+.case-cards .case-card .case-badge.selected {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.case-card-media {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 420px;
+  overflow: hidden;
+}
+
+.case-cards .case-card-media img {
+  height: 560px;
+  width: auto;
+  object-fit: cover;
+  object-position: top;
+}
+
+@media (max-width: 900px) {
+  .case-cards {
     grid-template-columns: 1fr;
   }
 }
