@@ -501,24 +501,20 @@ body.preload .reveal {
    and the homepage .case-badge. */
 .case-cards {
   width: 100%;
+  margin-top: 40px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 1fr 1fr;
   gap: 16px;
-}
-
-.case-content + .case-cards {
-  margin-top: 24px;
 }
 
 .case-cards .case-card {
   height: 640px;
   margin: 0;
   padding: 24px;
-  background-color: #161616;
+  background: #161616;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
   transition: none;
 }
@@ -527,16 +523,12 @@ body.preload .reveal {
   transform: none;
 }
 
-.case-card-content {
-  max-width: 420px;
-}
-
-.case-card-title {
-  margin: 0 0 12px;
+.case-cards .card-title {
+  margin: 0 0 8px;
   color: var(--text-primary);
   font-family: var(--font-family);
-  font-size: var(--text-title);
-  font-weight: var(--weight-regular);
+  font-size: 20px;
+  font-weight: 500;
   line-height: var(--lh-heading);
 }
 
@@ -548,11 +540,11 @@ body.preload .reveal {
 
 .case-cards .case-card .case-badge {
   display: inline-block;
+  align-self: flex-start;
+  margin-top: 8px;
   padding: 6px 12px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: none;
-  color: var(--text-primary);
   font-size: 14px;
   font-weight: var(--weight-regular);
   line-height: 1;
@@ -560,24 +552,26 @@ body.preload .reveal {
 }
 
 .case-cards .case-card .case-badge.rejected {
-  opacity: 0.6;
+  background: #2A2A2A;
+  color: #A1A1A1;
 }
 
 .case-cards .case-card .case-badge.selected {
-  background: rgba(255, 255, 255, 0.12);
+  background: #2A2A2A;
+  color: #EAEAEA;
 }
 
 .case-card-media {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  margin-top: auto;
   height: 420px;
   overflow: hidden;
+  border-radius: 16px;
 }
 
 .case-cards .case-card-media img {
+  display: block;
+  width: 100%;
   height: 560px;
-  width: auto;
   object-fit: cover;
   object-position: top;
 }
