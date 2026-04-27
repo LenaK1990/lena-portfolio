@@ -404,7 +404,7 @@ body.preload .reveal {
   font-size: var(--text-body);
   font-weight: 500;
   line-height: var(--lh-heading);
-  margin: 0 0 16px;
+  margin: 24px 0 12px;
 }
 
 .case-content .case-subtext:has(+ .section-subheading) {
@@ -412,7 +412,7 @@ body.preload .reveal {
 }
 
 .case-content .case-subtext + .section-subheading {
-  margin-top: 40px;
+  margin-top: 24px;
 }
 
 .case-content ul {
@@ -426,13 +426,16 @@ body.preload .reveal {
   margin-top: 16px;
 }
 
-.case-content .text-title + ul,
-.case-content .section-subheading + ul {
+.case-content .text-title + ul {
   margin-top: 0;
 }
 
+.case-content .section-subheading + ul {
+  margin-top: 12px;
+}
+
 .case-content ul + .section-subheading {
-  margin-top: 32px;
+  margin-top: 24px;
 }
 
 .case-list li + li {
