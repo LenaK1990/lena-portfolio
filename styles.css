@@ -515,6 +515,7 @@ body.preload .reveal {
   border-radius: 20px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   overflow: hidden;
   transition: none;
 }
@@ -563,17 +564,19 @@ body.preload .reveal {
 
 .case-card-media {
   margin-top: auto;
-  height: 420px;
+  height: 360px;
   overflow: hidden;
   border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
 
 .case-cards .case-card-media img {
   display: block;
-  width: 100%;
-  height: 560px;
-  object-fit: cover;
-  object-position: top;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
