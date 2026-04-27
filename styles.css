@@ -345,6 +345,11 @@ body.preload .reveal {
   line-height: var(--lh-body);
 }
 
+.case-content p {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
 .case-content p.section-subheading {
   line-height: var(--lh-heading);
 }
