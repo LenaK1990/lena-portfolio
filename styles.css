@@ -510,12 +510,11 @@ body.preload .reveal {
 .case-cards .case-card {
   height: 640px;
   margin: 0;
-  padding: 24px;
+  padding: 20px;
   background: #161616;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   overflow: hidden;
   transition: none;
 }
@@ -524,8 +523,15 @@ body.preload .reveal {
   transform: none;
 }
 
+.case-cards .case-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .case-cards .card-title {
-  margin: 0 0 8px;
+  margin: 0;
   color: var(--text-primary);
   font-family: var(--font-family);
   font-size: 20px;
@@ -534,7 +540,7 @@ body.preload .reveal {
 }
 
 .case-cards .case-card .case-subtext {
-  margin: 0 0 16px;
+  margin: 0;
   color: var(--text-secondary);
   line-height: var(--lh-body);
 }
@@ -542,7 +548,7 @@ body.preload .reveal {
 .case-cards .case-card .case-badge {
   display: inline-block;
   align-self: flex-start;
-  margin-top: 8px;
+  margin: 4px 0 0;
   padding: 6px 12px;
   border-radius: 999px;
   backdrop-filter: none;
@@ -563,8 +569,9 @@ body.preload .reveal {
 }
 
 .case-card-media {
+  margin-top: auto;
   position: relative;
-  height: 360px;
+  height: 320px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -573,10 +580,9 @@ body.preload .reveal {
 
 .case-cards .case-card-media img {
   display: block;
-  width: 260px;
+  width: 280px;
   height: auto;
-  object-fit: cover;
-  transform: translateY(40px);
+  object-fit: contain;
 }
 
 @media (max-width: 900px) {
