@@ -516,6 +516,7 @@ body.preload .reveal {
 }
 
 .case-cards .case-card {
+  height: 600px;
   margin: 0;
   padding: 24px;
   background: #161616;
