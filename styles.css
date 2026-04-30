@@ -516,7 +516,6 @@ body.preload .reveal {
 }
 
 .case-cards .case-card {
-  height: 640px;
   margin: 0;
   padding: 24px;
   background: #161616;
@@ -549,6 +548,7 @@ body.preload .reveal {
 
 .case-cards .case-card .case-subtext {
   margin: 0;
+  max-width: 560px;
   color: var(--text-secondary);
   font-size: 16px;
   line-height: 1.4;
@@ -594,6 +594,8 @@ body.preload .reveal {
   width: 300px;
   height: auto;
   margin-top: 0;
+  transform: scale(1.05);
+  transform-origin: top center;
 }
 
 @media (max-width: 900px) {
