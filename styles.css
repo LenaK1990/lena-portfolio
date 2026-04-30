@@ -510,7 +510,7 @@ body.preload .reveal {
 .case-cards .case-card {
   height: 640px;
   margin: 0;
-  padding: 20px;
+  padding: 24px;
   background: #161616;
   border-radius: 20px;
   display: flex;
@@ -536,19 +536,20 @@ body.preload .reveal {
   font-family: var(--font-family);
   font-size: 20px;
   font-weight: 500;
-  line-height: var(--lh-heading);
+  line-height: 1.25;
 }
 
 .case-cards .case-card .case-subtext {
   margin: 0;
   color: var(--text-secondary);
-  line-height: var(--lh-body);
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 .case-cards .case-card .case-badge {
   display: inline-block;
   align-self: flex-start;
-  margin: 4px 0 0;
+  margin: 8px 0 0;
   padding: 6px 12px;
   border-radius: 999px;
   backdrop-filter: none;
@@ -571,18 +572,18 @@ body.preload .reveal {
 .case-card-media {
   margin-top: auto;
   position: relative;
-  height: 320px;
+  height: 360px;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .case-cards .case-card-media img {
   display: block;
-  width: 280px;
+  width: 300px;
   height: auto;
-  object-fit: contain;
+  margin-top: -20px;
 }
 
 @media (max-width: 900px) {
