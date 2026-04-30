@@ -570,9 +570,10 @@ body.preload .reveal {
 }
 
 .case-card-media {
-  margin-top: auto;
+  margin: auto -24px -24px;
   position: relative;
-  height: 360px;
+  flex: 1;
+  min-height: 0;
   overflow: hidden;
   display: flex;
   justify-content: center;
