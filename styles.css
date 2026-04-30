@@ -549,7 +549,7 @@ body.preload .reveal {
 .case-cards .case-card .case-badge {
   display: inline-block;
   align-self: flex-start;
-  margin: 8px 0 0;
+  margin: 12px 0 0;
   padding: 6px 12px;
   border-radius: 999px;
   backdrop-filter: none;
@@ -571,7 +571,7 @@ body.preload .reveal {
 
 .case-card-media {
   margin: auto -24px -24px;
-  padding-top: 64px;
+  padding-top: 72px;
   position: relative;
   flex: 1;
   min-height: 0;
