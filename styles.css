@@ -605,6 +605,62 @@ body.preload .reveal {
   }
 }
 
+/* Horizontal-scroll variant: shows exactly 2 cards per viewport,
+   remaining cards are reachable via scroll + pagination dots. */
+.case-cards.case-cards--scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.case-cards.case-cards--scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.case-cards.case-cards--scroll .case-card {
+  flex: 0 0 calc((100% - 16px) / 2);
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 900px) {
+  .case-cards.case-cards--scroll .case-card {
+    flex: 0 0 100%;
+  }
+}
+
+.case-pagination {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.case-pagination-dot {
+  width: 6px;
+  height: 6px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.case-pagination-dot:hover {
+  background: var(--text-primary);
+}
+
+.case-pagination-dot.is-active {
+  background: var(--text-primary);
+}
+
 .case-label {
   margin-top: 0;
   margin-bottom: 24px;

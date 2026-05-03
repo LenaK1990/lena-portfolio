@@ -73,4 +73,52 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", syncNavScroll, { passive: true });
     syncNavScroll();
   }
+
+  document.querySelectorAll("[data-scroll-cards]").forEach((scroller) => {
+    const cards = scroller.querySelectorAll(".case-card");
+    const pagination = scroller.parentElement?.querySelector(
+      "[data-scroll-pagination]"
+    );
+    if (!cards.length || !pagination) return;
+
+    const dots = pagination.querySelectorAll(".case-pagination-dot");
+    if (!dots.length) return;
+
+    let rafId = null;
+
+    const updateActiveDot = () => {
+      rafId = null;
+      const scrollLeft = scroller.scrollLeft;
+      let closestIndex = 0;
+      let minDistance = Infinity;
+      cards.forEach((card, i) => {
+        const distance = Math.abs(card.offsetLeft - scrollLeft);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestIndex = i;
+        }
+      });
+      dots.forEach((dot, i) => {
+        dot.classList.toggle("is-active", i === closestIndex);
+      });
+    };
+
+    const onScroll = () => {
+      if (rafId !== null) return;
+      rafId = requestAnimationFrame(updateActiveDot);
+    };
+
+    scroller.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        const card = cards[i];
+        if (!card) return;
+        scroller.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+      });
+    });
+
+    updateActiveDot();
+  });
 });
