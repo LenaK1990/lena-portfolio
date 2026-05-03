@@ -75,31 +75,23 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   document.querySelectorAll("[data-scroll-cards]").forEach((scroller) => {
-    const cards = scroller.querySelectorAll(".case-card");
     const pagination = scroller.parentElement?.querySelector(
       "[data-scroll-pagination]"
     );
-    if (!cards.length || !pagination) return;
+    if (!pagination) return;
 
     const dots = pagination.querySelectorAll(".case-pagination-dot");
-    if (!dots.length) return;
+    if (dots.length < 2) return;
 
     let rafId = null;
 
     const updateActiveDot = () => {
       rafId = null;
-      const scrollLeft = scroller.scrollLeft;
-      let closestIndex = 0;
-      let minDistance = Infinity;
-      cards.forEach((card, i) => {
-        const distance = Math.abs(card.offsetLeft - scrollLeft);
-        if (distance < minDistance) {
-          minDistance = distance;
-          closestIndex = i;
-        }
-      });
+      const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      const ratio = maxScroll > 0 ? scroller.scrollLeft / maxScroll : 0;
+      const activeIndex = ratio < 0.5 ? 0 : 1;
       dots.forEach((dot, i) => {
-        dot.classList.toggle("is-active", i === closestIndex);
+        dot.classList.toggle("is-active", i === activeIndex);
       });
     };
 
@@ -113,9 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     dots.forEach((dot, i) => {
       dot.addEventListener("click", () => {
-        const card = cards[i];
-        if (!card) return;
-        scroller.scrollTo({ left: card.offsetLeft, behavior: "smooth" });
+        const maxScroll = scroller.scrollWidth - scroller.clientWidth;
+        scroller.scrollTo({
+          left: i === 0 ? 0 : maxScroll,
+          behavior: "smooth",
+        });
       });
     });
 
