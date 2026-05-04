@@ -616,8 +616,8 @@ body.preload .reveal {
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 16px;
-  padding-left: 0 !important;
-  padding-right: 0 !important;
+  padding-left: 0;
+  padding-right: 0;
   padding-bottom: 4px;
   overflow-x: auto;
   overflow-y: visible;
@@ -633,8 +633,7 @@ body.preload .reveal {
 }
 
 .case-cards.case-cards--scroll .case-card {
-  flex: 0 0 calc((100% - 16px) / 2) !important;
-  max-width: calc((100% - 16px) / 2) !important;
+  flex: 0 0 calc((100% - 16px) / 2);
   min-width: 0;
   scroll-snap-align: start;
 }
