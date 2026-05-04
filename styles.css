@@ -618,9 +618,11 @@ body.preload .reveal {
   gap: 16px;
   padding-left: 0 !important;
   padding-right: 0 !important;
+  padding-bottom: 4px;
   overflow-x: auto;
   overflow-y: visible;
   scroll-snap-type: x proximity;
+  scroll-padding-right: 24px;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
