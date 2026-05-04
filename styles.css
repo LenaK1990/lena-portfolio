@@ -616,9 +616,10 @@ body.preload .reveal {
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 16px;
-  padding-left: 0;
-  padding-right: 0;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   overflow-x: auto;
+  overflow-y: visible;
   scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   scrollbar-width: none;
@@ -630,13 +631,15 @@ body.preload .reveal {
 }
 
 .case-cards.case-cards--scroll .case-card {
-  flex: 0 0 calc((100% - 16px) / 2);
+  flex: 0 0 calc((100% - 16px) / 2) !important;
+  max-width: calc((100% - 16px) / 2) !important;
   min-width: 0;
   scroll-snap-align: start;
 }
 
-.case-cards.case-cards--scroll .case-card:last-child {
-  margin-right: 24px;
+.case-cards.case-cards--scroll::after {
+  content: "";
+  flex: 0 0 24px;
 }
 
 @media (max-width: 900px) {
