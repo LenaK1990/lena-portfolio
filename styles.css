@@ -23,6 +23,10 @@
   /* subtle motion tokens */
   --motion-duration: 0.48s;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Single source of truth for case card width.
+     Used by both .case-cards (grid) and .case-cards--scroll (flex). */
+  --case-card-width: calc((100% - 16px) / 2);
 }
 
 body {
@@ -515,7 +519,7 @@ body.preload .reveal {
   width: 100%;
   margin-top: 40px;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: var(--case-card-width) var(--case-card-width);
   gap: 16px;
 }
 
@@ -616,12 +620,16 @@ body.preload .reveal {
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 16px;
+  width: 100%;
+  max-width: 100%;
   padding-left: 0;
-  padding-right: 0;
+  padding-right: 24px;
   padding-bottom: 4px;
   overflow-x: auto;
   overflow-y: visible;
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
+  align-items: flex-start;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -631,13 +639,10 @@ body.preload .reveal {
 }
 
 .case-cards.case-cards--scroll .case-card {
-  flex: 0 0 calc((100% - 16px) / 2);
-  min-width: 0;
-}
-
-.case-cards.case-cards--scroll::after {
-  content: "";
-  flex: 0 0 24px;
+  flex: 0 0 var(--case-card-width);
+  max-width: var(--case-card-width);
+  box-sizing: border-box;
+  scroll-snap-align: start;
 }
 
 @media (max-width: 900px) {
