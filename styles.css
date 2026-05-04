@@ -621,8 +621,6 @@ body.preload .reveal {
   padding-bottom: 4px;
   overflow-x: auto;
   overflow-y: visible;
-  scroll-snap-type: x proximity;
-  scroll-padding-right: 24px;
   scroll-behavior: smooth;
   scrollbar-width: none;
   -ms-overflow-style: none;
@@ -633,9 +631,8 @@ body.preload .reveal {
 }
 
 .case-cards.case-cards--scroll .case-card {
-  flex: 0 0 527px;
-  min-width: 527px;
-  scroll-snap-align: start;
+  flex: 0 0 calc((100% - 16px) / 2);
+  min-width: 0;
 }
 
 .case-cards.case-cards--scroll::after {
