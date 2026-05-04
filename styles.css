@@ -633,8 +633,8 @@ body.preload .reveal {
 }
 
 .case-cards.case-cards--scroll .case-card {
-  flex: 0 0 calc((100% - 16px) / 2);
-  min-width: 0;
+  flex: 0 0 527px;
+  min-width: 527px;
   scroll-snap-align: start;
 }
 
