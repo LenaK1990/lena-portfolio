@@ -588,8 +588,8 @@ body.preload .reveal {
 }
 
 .case-card-media {
-  margin: auto -24px -24px;
-  padding-top: 76px;
+  margin: 76px -24px -24px;
+  padding-top: 0;
   position: relative;
   flex: 1;
   min-height: 0;
