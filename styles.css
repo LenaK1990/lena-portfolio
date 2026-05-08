@@ -650,6 +650,10 @@ body.preload .reveal {
   margin: 84px -24px -24px;
 }
 
+.case-cards.case-cards--scroll .case-card-media img {
+  margin-top: -24px;
+}
+
 @media (max-width: 900px) {
   .case-cards.case-cards--scroll .case-card {
     flex: 0 0 100%;
