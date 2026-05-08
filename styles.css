@@ -646,6 +646,10 @@ body.preload .reveal {
   scroll-snap-align: start;
 }
 
+.case-cards.case-cards--scroll .case-card-media {
+  margin: 84px -24px -24px;
+}
+
 @media (max-width: 900px) {
   .case-cards.case-cards--scroll .case-card {
     flex: 0 0 100%;
