@@ -648,16 +648,11 @@ body.preload .reveal {
   scroll-snap-align: start;
 }
 
-/* Match grid label→mockup gap (76px); padding + translate lift the phone
-   inside the PNG without negative margin (avoids top clipping). */
+/* Interaction-state PNGs have extra whitespace above the phone in the file.
+   Move the media block up (~20px) so phones align optically with the grid section. */
 .case-cards.case-cards--scroll .case-card-media {
-  margin: 76px -24px -24px;
-  padding-top: 16px;
-}
-
-.case-cards.case-cards--scroll .case-card-media img {
-  transform: translateY(-16px) scale(1.05);
-  transform-origin: top center;
+  margin: 56px -24px -24px;
+  padding-top: 0;
 }
 
 @media (max-width: 900px) {
