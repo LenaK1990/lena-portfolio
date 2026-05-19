@@ -525,8 +525,10 @@ body.preload .reveal {
 
 .case-cards .case-card {
   height: 600px;
+  min-height: 600px;
   margin: 0;
   padding: 24px;
+  box-sizing: border-box;
   background: #161616;
   border-radius: 20px;
   display: flex;
@@ -630,7 +632,7 @@ body.preload .reveal {
   overflow-y: visible;
   scroll-snap-type: x proximity;
   scroll-behavior: smooth;
-  align-items: flex-start;
+  align-items: stretch;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }
@@ -646,10 +648,16 @@ body.preload .reveal {
   scroll-snap-align: start;
 }
 
-/* Slightly tighter block offset than 76px to compensate for extra
-   whitespace baked into interaction-state PNGs (no image margin — avoids top clip). */
+/* Match grid label→mockup gap (76px); padding + translate lift the phone
+   inside the PNG without negative margin (avoids top clipping). */
 .case-cards.case-cards--scroll .case-card-media {
-  margin: 70px -24px -24px;
+  margin: 76px -24px -24px;
+  padding-top: 16px;
+}
+
+.case-cards.case-cards--scroll .case-card-media img {
+  transform: translateY(-16px) scale(1.05);
+  transform-origin: top center;
 }
 
 @media (max-width: 900px) {
