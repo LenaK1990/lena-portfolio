@@ -544,7 +544,7 @@ body.preload .reveal {
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
-  min-height: 120px;
+  min-height: 140px;
 }
 
 .case-cards .card-title {
@@ -646,12 +646,10 @@ body.preload .reveal {
   scroll-snap-align: start;
 }
 
+/* Slightly tighter block offset than 76px to compensate for extra
+   whitespace baked into interaction-state PNGs (no image margin — avoids top clip). */
 .case-cards.case-cards--scroll .case-card-media {
-  margin: 76px -24px -24px;
-}
-
-.case-cards.case-cards--scroll .case-card-media img {
-  margin-top: -24px;
+  margin: 70px -24px -24px;
 }
 
 @media (max-width: 900px) {
