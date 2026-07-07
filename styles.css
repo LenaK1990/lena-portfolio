@@ -532,7 +532,7 @@ body.preload .reveal {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 10px;
 }
 
 .impact-metric .text-hero {
