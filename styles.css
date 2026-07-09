@@ -728,8 +728,26 @@ body.preload .reveal {
 }
 
 @media (max-width: 900px) {
+  .case-cards.case-cards--scroll {
+    gap: 12px;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    scroll-padding-inline: max(16px, env(safe-area-inset-left, 0px))
+      max(16px, env(safe-area-inset-right, 0px));
+    scroll-snap-type: x mandatory;
+  }
+
   .case-cards.case-cards--scroll .case-card {
-    flex: 0 0 100%;
+    flex: 0 0 92%;
+    max-width: 92%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+  }
+}
+
+@media (min-width: 901px) {
+  .case-pagination .case-pagination-dot:nth-child(n + 3) {
+    display: none;
   }
 }
 
@@ -1206,10 +1224,6 @@ a.case-card:hover .case-hover-btn {
 
   .case-cards .case-card-media img {
     max-width: 260px;
-  }
-
-  .case-cards.case-cards--scroll {
-    padding-right: 16px;
   }
 
   .hypothesis-card {
