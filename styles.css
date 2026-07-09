@@ -538,6 +538,7 @@ body.preload .reveal {
 .impact-metric .text-hero {
   margin: 0;
   line-height: 1;
+  font-variant-numeric: tabular-nums;
 }
 
 .impact-metric .text-body {
