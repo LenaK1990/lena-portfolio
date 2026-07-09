@@ -23,6 +23,9 @@
   /* subtle motion tokens */
   --motion-duration: 0.48s;
   --motion-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-offset: 20px;
+  --reveal-duration: 0.6s;
+  --reveal-stagger: 80ms;
 
   /* Single source of truth for case card width.
      Used by both .case-cards (grid) and .case-cards--scroll (flex). */
@@ -87,7 +90,7 @@ p.text-body {
 
 body.preload .reveal {
   opacity: 0 !important;
-  transform: translateY(12px) !important;
+  transform: translateY(var(--reveal-offset)) !important;
 }
 
   /* NAV */
@@ -947,7 +950,7 @@ a.case-card:hover .case-hover-btn {
 
 .reveal {
   opacity: 0;
-  transform: translateY(10px);
+  transform: translateY(var(--reveal-offset));
   will-change: transform, opacity;
   transition-delay: var(--reveal-delay, 0ms);
 }
@@ -956,14 +959,15 @@ a.case-card:hover .case-hover-btn {
   opacity: 1;
   transform: translateY(0);
   transition:
-    opacity 0.5s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity var(--reveal-duration) var(--motion-ease),
+    transform var(--reveal-duration) var(--motion-ease);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
+  .reveal,
+  body.preload .reveal {
+    opacity: 1 !important;
+    transform: none !important;
     transition: none;
   }
 }

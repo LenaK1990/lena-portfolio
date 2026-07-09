@@ -18,30 +18,53 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.classList.remove("preload");
   });
 
-  const heroItems = document.querySelectorAll(".hero .reveal");
-  heroItems.forEach((el, index) => {
-    el.style.setProperty("--reveal-delay", `${index * 80}ms`);
+  const reducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+  const revealStagger = 80;
+  const revealObserverOptions = {
+    threshold: 0.12,
+    rootMargin: "0px 0px -8% 0px",
+  };
+
+  document.querySelectorAll(".reveal-group").forEach((group) => {
+    const items = group.querySelectorAll(":scope > .reveal");
+    items.forEach((el, index) => {
+      el.style.setProperty("--reveal-delay", `${index * revealStagger}ms`);
+    });
   });
 
-  const reveals = document.querySelectorAll(".reveal");
+  const showReveal = (el) => el.classList.add("is-visible");
 
-  if (!("IntersectionObserver" in window)) {
-    reveals.forEach((el) => el.classList.add("is-visible"));
+  if (reducedMotion || !("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(showReveal);
   } else {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      {
-        threshold: 0.1,
-      }
-    );
+    document.querySelectorAll(".reveal-group").forEach((group) => {
+      const items = group.querySelectorAll(":scope > .reveal");
+      if (!items.length) return;
 
-    reveals.forEach((el) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          items.forEach(showReveal);
+          observer.unobserve(group);
+        });
+      }, revealObserverOptions);
+
+      observer.observe(group);
+    });
+
+    document.querySelectorAll(".reveal").forEach((el) => {
+      if (el.closest(".reveal-group")) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          showReveal(entry.target);
+          observer.unobserve(entry.target);
+        });
+      }, revealObserverOptions);
+
       observer.observe(el);
     });
   }
