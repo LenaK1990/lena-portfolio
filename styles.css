@@ -32,12 +32,31 @@
   --case-card-width: calc((100% - 16px) / 2);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
 body {
     margin: 0;
     font-family: var(--font-family);
     background: var(--bg-primary);
     color: var(--text-primary);
+    overflow-x: clip;
+    max-width: 100%;
   }
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+}
 
 .text-hero {
   font-family: var(--font-family);
@@ -237,6 +256,7 @@ body.preload .reveal {
   max-width: 1100px;
   margin: 0 auto;
   padding: 115px 20px 24px;
+  overflow-x: clip;
 }
 
 .cases .case-subtext {
@@ -247,6 +267,7 @@ body.preload .reveal {
   max-width: 1100px;
   margin: 0 auto;
   padding: 96px 20px 80px;
+  overflow-x: clip;
 }
 
 /* Case study page hero (scoped — homepage also uses .hero) */
@@ -651,7 +672,8 @@ body.preload .reveal {
 
 .case-cards .case-card-media img {
   display: block;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: auto;
   margin-top: 0;
   transform: scale(1.05);
@@ -683,6 +705,8 @@ body.preload .reveal {
   align-items: stretch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
 }
 
 .case-cards.case-cards--scroll::-webkit-scrollbar {
@@ -866,11 +890,6 @@ body.preload .reveal {
   opacity: 1 !important;
 }
 
-.case-card:hover {
-  opacity: 1 !important;
-  transform: translateY(-4px);
-}
-
 /* CTA stack only — not .case * (would break .reveal in .case-header) */
 .case a.case-card,
 .case a.case-card .case-hover,
@@ -942,6 +961,11 @@ a.case-card:hover .case-hover-btn {
     background: #3a3a3a;
     box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
   }
+
+  .case-card:hover {
+    opacity: 1 !important;
+    transform: translateY(-4px);
+  }
 }
 
 /* =========================
@@ -958,6 +982,7 @@ a.case-card:hover .case-hover-btn {
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
+  will-change: auto;
   transition:
     opacity var(--reveal-duration) var(--motion-ease),
     transform var(--reveal-duration) var(--motion-ease);
@@ -982,4 +1007,269 @@ a.case-card:hover .case-hover-btn {
   color: rgba(255, 255, 255, 0.6);
   opacity: 1;
   margin: 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+  .nav {
+    padding: 0 24px;
+  }
+
+  .case-page {
+    padding-top: 72px;
+    padding-bottom: 64px;
+  }
+
+  .cases {
+    padding-top: 88px;
+  }
+
+  .case-section {
+    margin-top: 64px;
+  }
+
+  .case-content .text-body + .text-title {
+    margin-top: 56px;
+  }
+
+  .case-page .hero-image {
+    height: clamp(300px, 52vw, 520px);
+  }
+
+  .case-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .case-year {
+    white-space: normal;
+  }
+
+  .hypothesis-card {
+    padding: 28px 24px;
+  }
+
+  .impact-metrics {
+    column-gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --text-hero: 36px;
+    --reveal-offset: 16px;
+  }
+
+  .hero {
+    padding: 40px 20px 80px;
+  }
+
+  .cases {
+    padding-top: 72px;
+    padding-bottom: 32px;
+  }
+
+  .case {
+    margin-bottom: 64px;
+  }
+
+  .case-page .hero-grid {
+    gap: 32px;
+  }
+
+  .case-content + .case-block,
+  .case-content + .case-hypotheses,
+  .case-cards {
+    margin-top: 32px;
+  }
+
+  .case-content .text-title + .impact-metrics {
+    margin-top: 28px;
+  }
+
+  .impact-metrics {
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --text-hero: 32px;
+    --text-title: 22px;
+    --text-body: 15px;
+    --text-small: 13px;
+    --reveal-offset: 14px;
+    --reveal-duration: 0.55s;
+  }
+
+  .nav {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .hero {
+    padding: 32px 16px 64px;
+  }
+
+  .avatar {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 20px;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  .subtext {
+    margin-bottom: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    max-width: 280px;
+    gap: 10px;
+  }
+
+  .button {
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 18px;
+  }
+
+  .cases {
+    padding: 56px 16px 24px;
+  }
+
+  .case-page {
+    padding: 48px 16px 56px;
+  }
+
+  .case-section {
+    margin-top: 48px;
+  }
+
+  .case-content .text-body + .text-title {
+    margin-top: 48px;
+  }
+
+  .case-page .hero-left {
+    gap: 12px;
+  }
+
+  .case-page .hero-right {
+    gap: 24px;
+  }
+
+  .case-page .hero-image {
+    margin-top: 32px;
+    height: clamp(240px, 62vw, 360px);
+    border-radius: 16px;
+  }
+
+  .case-image img {
+    border-radius: 16px;
+  }
+
+  .case-cards .case-card {
+    height: auto;
+    min-height: 500px;
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  .case-cards .case-card-content {
+    min-height: 120px;
+  }
+
+  .case-cards .card-title {
+    font-size: 18px;
+  }
+
+  .case-cards .case-card .case-subtext {
+    font-size: 15px;
+  }
+
+  .case-card-media {
+    margin: 56px -20px -20px;
+  }
+
+  .case-cards.case-cards--scroll .case-card-media {
+    margin: 48px -20px -20px;
+  }
+
+  .case-cards .case-card-media img {
+    max-width: 260px;
+  }
+
+  .case-cards.case-cards--scroll {
+    padding-right: 16px;
+  }
+
+  .hypothesis-card {
+    padding: 24px 20px;
+    border-radius: 16px;
+    gap: 12px;
+  }
+
+  .hypothesis-card h3 {
+    font-size: 18px;
+  }
+
+  .impact-metrics {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 28px;
+    margin-bottom: 36px;
+  }
+
+  .impact-metric .text-hero {
+    font-size: var(--text-hero);
+  }
+
+  .case-pagination-dot {
+    width: 8px;
+    height: 8px;
+    padding: 10px;
+    background-clip: content-box;
+  }
+
+  .footer {
+    padding: 40px 16px;
+  }
+}
+
+@media (max-width: 390px) {
+  :root {
+    --text-hero: 30px;
+    --text-title: 20px;
+  }
+
+  .case-cards .case-card {
+    min-height: 460px;
+  }
+
+  .case-cards .case-card-media img {
+    max-width: 240px;
+  }
+
+  .impact-metrics {
+    row-gap: 24px;
+  }
+}
+
+@media (hover: none) {
+  .case-card:hover {
+    transform: none;
+  }
+
+  .button:hover svg {
+    transform: none;
+  }
 }
