@@ -349,6 +349,11 @@ body.preload .reveal {
   background-repeat: no-repeat;
 }
 
+/* Empty hero media shell for case scaffolds (keeps shared card metrics). */
+.case-page .hero-image--placeholder {
+  background-image: none;
+}
+
 .case-section {
   margin-top: 80px;
 }
