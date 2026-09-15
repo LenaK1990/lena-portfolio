@@ -796,11 +796,19 @@ body.preload .reveal {
   width: 100%;
 }
 
-.case-image img {
+.case-image img,
+.case-image--placeholder {
   width: 100%;
   height: auto;
   border-radius: 20px;
   display: block;
+}
+
+/* Empty media shell for sections awaiting final assets.
+   Ratio matches the case image assets (2200x1280). */
+.case-image--placeholder {
+  aspect-ratio: 2200 / 1280;
+  background-color: #161616;
 }
 
 @media (max-width: 1100px) {
@@ -1196,7 +1204,8 @@ a.case-card:hover .case-hover-btn {
     border-radius: 16px;
   }
 
-  .case-image img {
+  .case-image img,
+  .case-image--placeholder {
     border-radius: 16px;
   }
 
