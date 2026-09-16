@@ -3,9 +3,14 @@
   --bg-primary: #0F0F0F;
   --bg-button: rgba(255, 255, 255, 0.05);
 
+  /* Shared fill for raised surfaces (cards, media shells).
+     Sits just above --bg-primary; the stroke carries the edge. */
+  --surface-fill: #161616;
+
   /* Text */
   --text-primary: #EAEAEA;
-  --text-secondary: rgba(255, 255, 255, 0.56);
+  --text-secondary: #A0A0A0;
+  --text-tertiary: #8A8A8A;
 
   /* Typography */
   --font-family: Inter, sans-serif;
@@ -19,6 +24,16 @@
   --lh-heading: 1.25;
   --lh-normal: 1.2;
   --lh-body: 1.55;
+
+  /* Bevelled hairline for dark surfaces: overall 1px stroke,
+     lit top edge, shaded bottom edge. */
+  --surface-stroke:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px rgba(80, 80, 80, 0.16),
+    inset 0 -1px rgba(0, 0, 0, 0.18);
+
+  /* Corner radius for landscape media surfaces (hero, case images). */
+  --radius-media: 28px;
 
   /* subtle motion tokens */
   --motion-duration: 0.48s;
@@ -87,8 +102,7 @@ video {
   font-size: var(--text-small);
   font-weight: var(--weight-regular);
   line-height: var(--lh-normal);
-  color: var(--text-secondary);
-  opacity: 0.7;
+  color: var(--text-tertiary);
 }
 
 p {
@@ -229,7 +243,9 @@ body.preload .reveal {
     font-size: var(--text-body);
     font-weight: var(--weight-regular);
     text-decoration: none;
-  
+
+    box-shadow: var(--surface-stroke);
+
     transition: all 0.2s ease;
   }
   
@@ -327,7 +343,6 @@ body.preload .reveal {
 }
 
 .case-page .meta-block .text-small {
-  opacity: 0.6;
   margin-bottom: 10px;
 }
 
@@ -340,13 +355,14 @@ body.preload .reveal {
   margin-bottom: 0;
   width: 100%;
   height: 640px;
-  border-radius: 20px;
+  border-radius: var(--radius-media);
 
-  background-color: #161616;
+  background-color: var(--surface-fill);
   background-image: url("irm-hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  box-shadow: var(--surface-stroke);
 }
 
 /* Empty hero media shell for case scaffolds (keeps shared card metrics). */
@@ -504,7 +520,7 @@ body.preload .reveal {
 }
 
 .hypothesis-card {
-  background: #161616;
+  background: var(--surface-fill);
   border-radius: 20px;
   padding: 32px 40px 32px;
   min-height: auto;
@@ -603,7 +619,7 @@ body.preload .reveal {
   margin: 0;
   padding: 24px;
   box-sizing: border-box;
-  background: #161616;
+  background: var(--surface-fill);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
@@ -793,14 +809,15 @@ body.preload .reveal {
 }
 
 .case-image {
-  width: 100%;
+  position: relative;
 }
 
+.case-image,
 .case-image img,
 .case-image--placeholder {
   width: 100%;
   height: auto;
-  border-radius: 20px;
+  border-radius: var(--radius-media);
   display: block;
 }
 
@@ -808,7 +825,7 @@ body.preload .reveal {
    Ratio matches the case image assets (2200x1280). */
 .case-image--placeholder {
   aspect-ratio: 2200 / 1280;
-  background-color: #161616;
+  background-color: var(--surface-fill);
 }
 
 @media (max-width: 1100px) {
@@ -836,7 +853,7 @@ body.preload .reveal {
   font-weight: var(--weight-regular);
   text-decoration: none;
   opacity: 1;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), var(--surface-stroke);
   transition: transform 0.2s ease, background 0.2s ease,
     backdrop-filter 0.2s ease, -webkit-backdrop-filter 0.2s ease,
     box-shadow 0.2s ease;
@@ -899,7 +916,7 @@ body.preload .reveal {
 }
 
 .case-year {
-  color: var(--text-secondary);
+  color: var(--text-tertiary);
   white-space: nowrap;
 }
 
@@ -911,9 +928,9 @@ body.preload .reveal {
   position: relative;
   z-index: 1;
   margin-top: 16px;
-  border-radius: 20px;
+  border-radius: var(--radius-media);
   overflow: hidden;
-  background: #1F1F1F;
+  background: var(--surface-fill);
   transition: transform 0.2s ease;
 }
 
@@ -975,7 +992,7 @@ a.case-card .case-hover-btn {
 
   background: #2a2a2a;
   color: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.5), var(--surface-stroke);
   transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease;
 }
 
@@ -990,13 +1007,38 @@ a.case-card:hover .case-hover-btn {
 @media (hover: hover) and (pointer: fine) {
   a.case-card:hover .case-hover-btn:hover {
     background: #3a3a3a;
-    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), var(--surface-stroke);
   }
 
   .case-card:hover {
     opacity: 1 !important;
     transform: translateY(-4px);
   }
+}
+
+/* =========================
+  SURFACE STROKE
+========================= */
+
+/* Drawn as an overlay rather than a plain inset shadow so full-bleed
+   media inside a card can't paint over the stroke. */
+.case-card,
+.case-cards .case-card,
+.hypothesis-card {
+  position: relative;
+}
+
+.case-card::after,
+.case-cards .case-card::after,
+.hypothesis-card::after,
+.case-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: var(--surface-stroke);
 }
 
 /* =========================
@@ -1035,7 +1077,7 @@ a.case-card:hover .case-hover-btn {
 }
 
 .footer p {
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-tertiary);
   opacity: 1;
   margin: 0;
 }
@@ -1198,15 +1240,13 @@ a.case-card:hover .case-hover-btn {
     gap: 24px;
   }
 
+  :root {
+    --radius-media: 20px;
+  }
+
   .case-page .hero-image {
     margin-top: 32px;
     height: clamp(240px, 62vw, 360px);
-    border-radius: 16px;
-  }
-
-  .case-image img,
-  .case-image--placeholder {
-    border-radius: 16px;
   }
 
   .case-cards .case-card {
