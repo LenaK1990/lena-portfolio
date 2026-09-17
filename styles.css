@@ -318,8 +318,43 @@ body.preload .reveal {
   gap: 16px;
 }
 
-.case-page .hero-left .text-small {
+.case-page .hero-left > .text-small {
   margin-bottom: 12px;
+}
+
+.case-page .hero-results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.case-page .hero-results .text-title {
+  margin: 0 0 16px;
+}
+
+.case-page .hero-results-metrics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 88px;
+  width: 100%;
+}
+
+.case-page .hero-results-metric {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.case-page .hero-results .section-subheading {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.case-page .hero-results .text-body {
+  margin: 0;
 }
 
 .hero-text {
@@ -1234,6 +1269,11 @@ a.case-card:hover .case-hover-btn {
 
   .case-page .hero-left {
     gap: 12px;
+  }
+
+  .case-page .hero-results-metrics {
+    flex-wrap: wrap;
+    gap: 32px;
   }
 
   .case-page .hero-right {
