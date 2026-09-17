@@ -414,7 +414,8 @@ body.preload .reveal {
 }
 
 .case-content + .case-block,
-.case-content + .case-hypotheses {
+.case-content + .case-hypotheses,
+.case-block + .case-content {
   margin-top: 40px;
 }
 
@@ -1201,6 +1202,7 @@ a.case-card:hover .case-hover-btn {
 
   .case-content + .case-block,
   .case-content + .case-hypotheses,
+  .case-block + .case-content,
   .case-cards {
     margin-top: 32px;
   }
