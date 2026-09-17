@@ -190,18 +190,27 @@ document.addEventListener("DOMContentLoaded", () => {
       return `${prefix}${value}${suffix}`;
     };
 
-    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    const metricFrom = (el) => {
+      if (el.dataset.countFrom == null || el.dataset.countFrom === "") {
+        return 0;
+      }
+      return Number(el.dataset.countFrom);
+    };
 
-    const animateMetric = (el, duration = 1200) => {
+    const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+    const duration = 1300;
+
+    const animateMetric = (el) => {
       const target = Number(el.dataset.countTo);
-      if (!Number.isFinite(target)) return;
+      const from = metricFrom(el);
+      if (!Number.isFinite(target) || !Number.isFinite(from)) return;
 
       const start = performance.now();
-      el.textContent = formatMetric(el, 0);
+      el.textContent = formatMetric(el, from);
 
       const tick = (now) => {
         const progress = Math.min((now - start) / duration, 1);
-        const value = Math.round(target * easeOutCubic(progress));
+        const value = Math.round(from + (target - from) * easeOutCubic(progress));
         el.textContent = formatMetric(el, value);
 
         if (progress < 1) {
@@ -212,30 +221,58 @@ document.addEventListener("DOMContentLoaded", () => {
       requestAnimationFrame(tick);
     };
 
-    if (!("IntersectionObserver" in window) || reducedMotion) {
-      metricValues.forEach((el) => {
+    const showFinalMetrics = (els) => {
+      els.forEach((el) => {
         const target = Number(el.dataset.countTo);
         if (Number.isFinite(target)) {
           el.textContent = formatMetric(el, target);
         }
       });
+    };
+
+    const metricGroups = document.querySelectorAll(".impact-metrics");
+    const grouped = new Set();
+    metricGroups.forEach((group) => {
+      group.querySelectorAll("[data-count-to]").forEach((el) => grouped.add(el));
+    });
+    const ungrouped = [...metricValues].filter((el) => !grouped.has(el));
+
+    if (!("IntersectionObserver" in window) || reducedMotion) {
+      showFinalMetrics(metricValues);
     } else {
-      const metricObserver = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (!entry.isIntersecting || entry.target.dataset.countAnimated) {
-              return;
-            }
+      const observeAndAnimate = (root, els) => {
+        const metricObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting || entry.target.dataset.countAnimated) {
+                return;
+              }
 
-            entry.target.dataset.countAnimated = "true";
-            metricObserver.unobserve(entry.target);
-            animateMetric(entry.target);
-          });
-        },
-        { threshold: 0.35 }
-      );
+              entry.target.dataset.countAnimated = "true";
+              metricObserver.unobserve(entry.target);
 
-      metricValues.forEach((el) => metricObserver.observe(el));
+              const revealMs =
+                parseFloat(
+                  getComputedStyle(document.documentElement).getPropertyValue(
+                    "--reveal-duration"
+                  )
+                ) * 1000 || 600;
+
+              window.setTimeout(() => {
+                els.forEach(animateMetric);
+              }, revealMs);
+            });
+          },
+          { threshold: 0.35 }
+        );
+
+        metricObserver.observe(root);
+      };
+
+      metricGroups.forEach((group) => {
+        observeAndAnimate(group, [...group.querySelectorAll("[data-count-to]")]);
+      });
+      ungrouped.forEach((el) => observeAndAnimate(el, [el]));
     }
   }
 });

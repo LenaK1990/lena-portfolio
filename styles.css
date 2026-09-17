@@ -621,6 +621,16 @@ body.preload .reveal {
   font-variant-numeric: tabular-nums;
 }
 
+.impact-arrow {
+  display: inline-block;
+  margin: 0 0.22em 0 0.18em;
+  font-size: 0.5em;
+  font-weight: 400;
+  color: var(--text-tertiary);
+  line-height: 1;
+  transform: translateY(-0.14em);
+}
+
 .impact-metric .text-body {
   margin: 0;
 }
