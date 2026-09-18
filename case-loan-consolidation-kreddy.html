@@ -8,7 +8,7 @@
   <!-- Google Fonts (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=47" />
 </head>
 <body class="preload">
 
@@ -31,11 +31,11 @@
             <h2 class="text-title">Results</h2>
             <div class="hero-results-metrics">
               <div class="hero-results-metric">
-                <p class="section-subheading">3.92% → 4.31%</p>
+                <p class="section-subheading">3.92%<span class="impact-arrow">→</span><span data-count-from="3.92" data-count-to="4.31" data-count-suffix="%">4.31%</span></p>
                 <p class="text-body">Consolidation conversion</p>
               </div>
               <div class="hero-results-metric">
-                <p class="section-subheading">+10.06%</p>
+                <p class="section-subheading" data-count-to="10.06" data-count-prefix="+" data-count-suffix="%">+10.06%</p>
                 <p class="text-body">Relative difference</p>
               </div>
             </div>
@@ -153,26 +153,64 @@
       </div>
 
       <div class="case-cards reveal">
-        <div class="case-card">
-          <div class="case-card-content">
-            <h3 class="card-title">Sticky UC data banner</h3>
+        <div class="direction-column">
+          <div class="case-card">
+            <div class="case-card-content">
+              <h3 class="card-title">Sticky UC data banner</h3>
+            </div>
+            <div
+              class="case-card-media"
+              role="img"
+              aria-label="Sticky UC data banner prototype placeholder"
+            ></div>
           </div>
-          <div
-            class="case-card-media"
-            role="img"
-            aria-label="Sticky UC data banner prototype placeholder"
-          ></div>
+          <ul class="direction-points">
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+              <p class="section-subheading">Non-intrusive</p>
+              <p class="text-body">Stays outside the main form flow.</p>
+            </li>
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+              <p class="section-subheading">Persistent</p>
+              <p class="text-body">UC data remains accessible throughout the journey.</p>
+            </li>
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">⚠&#xFE0E;</span>
+              <p class="section-subheading">CTA visibility</p>
+              <p class="text-body">May compete with the primary CTA.</p>
+            </li>
+          </ul>
         </div>
 
-        <div class="case-card">
-          <div class="case-card-content">
-            <h3 class="card-title">UC data compact card</h3>
+        <div class="direction-column">
+          <div class="case-card">
+            <div class="case-card-content">
+              <h3 class="card-title">UC data compact card</h3>
+            </div>
+            <div
+              class="case-card-media"
+              role="img"
+              aria-label="UC data compact card prototype placeholder"
+            ></div>
           </div>
-          <div
-            class="case-card-media"
-            role="img"
-            aria-label="UC data compact card prototype placeholder"
-          ></div>
+          <ul class="direction-points">
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+              <p class="section-subheading">Contextual</p>
+              <p class="text-body">Placed directly before the consolidation decision.</p>
+            </li>
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+              <p class="section-subheading">Clear &amp; neutral</p>
+              <p class="text-body">Keeps UC data distinct from the consolidation control.</p>
+            </li>
+            <li class="direction-point">
+              <span class="direction-point-icon" aria-hidden="true">⚠&#xFE0E;</span>
+              <p class="section-subheading">Less persistent</p>
+              <p class="text-body">Only visible at the point of decision.</p>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
@@ -182,6 +220,6 @@
     <p class="text-small">© 2026 Lena Klimova. Designed & built with Cursor</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=45"></script>
 </body>
 </html>

@@ -36,6 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const showReveal = (el) => el.classList.add("is-visible");
 
+  const revealDirectionList = (list) => {
+    requestAnimationFrame(() => {
+      list.classList.add("is-visible");
+    });
+  };
+
   if (reducedMotion || !("IntersectionObserver" in window)) {
     document.querySelectorAll(".reveal").forEach(showReveal);
   } else {
@@ -66,6 +72,23 @@ document.addEventListener("DOMContentLoaded", () => {
       }, revealObserverOptions);
 
       observer.observe(el);
+    });
+
+    document.querySelectorAll(".direction-points").forEach((list) => {
+      list.classList.add("is-pending");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          revealDirectionList(list);
+          observer.unobserve(list);
+        });
+      }, {
+        threshold: 0.4,
+        rootMargin: "0px 0px -12% 0px",
+      });
+
+      observer.observe(list);
     });
   }
 
@@ -184,10 +207,32 @@ document.addEventListener("DOMContentLoaded", () => {
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
+    const metricDecimals = (el) => {
+      const specified = el.dataset.countDecimals;
+      if (specified != null && specified !== "") {
+        const n = Number(specified);
+        return Number.isFinite(n) ? n : 0;
+      }
+
+      const decimalsOf = (s) => {
+        const text = String(s);
+        const i = text.indexOf(".");
+        return i === -1 ? 0 : text.length - i - 1;
+      };
+
+      return Math.max(
+        decimalsOf(el.dataset.countTo || ""),
+        decimalsOf(el.dataset.countFrom || "")
+      );
+    };
+
     const formatMetric = (el, value) => {
       const prefix = el.dataset.countPrefix || "";
       const suffix = el.dataset.countSuffix || "";
-      return `${prefix}${value}${suffix}`;
+      const decimals = metricDecimals(el);
+      const display =
+        decimals > 0 ? Number(value).toFixed(decimals) : String(Math.round(value));
+      return `${prefix}${display}${suffix}`;
     };
 
     const metricFrom = (el) => {
@@ -210,7 +255,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const tick = (now) => {
         const progress = Math.min((now - start) / duration, 1);
-        const value = Math.round(from + (target - from) * easeOutCubic(progress));
+        const value = from + (target - from) * easeOutCubic(progress);
         el.textContent = formatMetric(el, value);
 
         if (progress < 1) {
