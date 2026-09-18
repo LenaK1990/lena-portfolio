@@ -36,17 +36,43 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const showReveal = (el) => el.classList.add("is-visible");
 
+  const afterListReveals = document.querySelectorAll(".reveal-after-lists");
+  const directionLists = document.querySelectorAll(".direction-points");
+  const listHoldMs = 1320;
+  let listsFinished = directionLists.length === 0;
+  let listsPending = directionLists.length;
+
+  const revealAfterListsIfReady = (el) => {
+    if (!listsFinished) return;
+    showReveal(el);
+  };
+
+  const finishDirectionLists = () => {
+    if (listsFinished) return;
+    listsFinished = true;
+    afterListReveals.forEach((el) => {
+      if (el.dataset.inView === "true") showReveal(el);
+    });
+  };
+
   const revealDirectionList = (list) => {
     requestAnimationFrame(() => {
       list.classList.add("is-visible");
     });
+
+    listsPending -= 1;
+    if (listsPending <= 0) {
+      window.setTimeout(finishDirectionLists, listHoldMs);
+    }
   };
 
   if (reducedMotion || !("IntersectionObserver" in window)) {
     document.querySelectorAll(".reveal").forEach(showReveal);
   } else {
     document.querySelectorAll(".reveal-group").forEach((group) => {
-      const items = group.querySelectorAll(":scope > .reveal");
+      const items = [...group.querySelectorAll(":scope > .reveal")].filter(
+        (el) => !el.classList.contains("reveal-after-lists")
+      );
       if (!items.length) return;
 
       const observer = new IntersectionObserver((entries) => {
@@ -61,6 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelectorAll(".reveal").forEach((el) => {
+      if (el.classList.contains("reveal-after-lists")) return;
       if (el.closest(".reveal-group")) return;
 
       const observer = new IntersectionObserver((entries) => {
@@ -74,7 +101,20 @@ document.addEventListener("DOMContentLoaded", () => {
       observer.observe(el);
     });
 
-    document.querySelectorAll(".direction-points").forEach((list) => {
+    afterListReveals.forEach((el) => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          el.dataset.inView = "true";
+          revealAfterListsIfReady(el);
+          if (el.classList.contains("is-visible")) observer.unobserve(el);
+        });
+      }, revealObserverOptions);
+
+      observer.observe(el);
+    });
+
+    directionLists.forEach((list) => {
       list.classList.add("is-pending");
 
       const observer = new IntersectionObserver((entries) => {

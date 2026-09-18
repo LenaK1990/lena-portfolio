@@ -8,7 +8,7 @@
   <!-- Google Fonts (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=47" />
+  <link rel="stylesheet" href="styles.css?v=58" />
 </head>
 <body class="preload">
 
@@ -78,9 +78,9 @@
     <section class="case-section reveal-group">
       <div class="case-content reveal">
 
-        <h2 class="text-title">Problem</h2>
+        <h2 class="text-title">Challenge</h2>
         <p class="text-body">
-          Kreddy already showed users their credit score and existing loans across the app, but this information was no longer available when they entered the loan application and decided whether to consolidate their existing loans.
+          Kreddy already showed users their credit score and existing loans across the app, but not at the point of deciding whether to consolidate. The challenge was to bring this information into the loan application without disrupting the existing flow or making consolidation feel mandatory.
         </p>
 
       </div>
@@ -97,17 +97,6 @@
         <h2 class="text-title">Business goal</h2>
         <p class="text-body">
           Increase the number of submitted loan applications where users choose to consolidate their existing loans.
-        </p>
-
-      </div>
-    </section>
-
-    <section class="case-section reveal-group">
-      <div class="case-content reveal">
-
-        <h2 class="text-title">Design challenge</h2>
-        <p class="text-body">
-          How might we bring relevant loan information into the application at the point of the consolidation decision, without disrupting the existing loan flow or making consolidation feel mandatory?
         </p>
 
       </div>
@@ -167,17 +156,10 @@
           <ul class="direction-points">
             <li class="direction-point">
               <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="section-subheading">Non-intrusive</p>
-              <p class="text-body">Stays outside the main form flow.</p>
+              <p class="text-body">Stays outside the main form flow and remains accessible throughout the journey.</p>
             </li>
             <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="section-subheading">Persistent</p>
-              <p class="text-body">UC data remains accessible throughout the journey.</p>
-            </li>
-            <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">⚠&#xFE0E;</span>
-              <p class="section-subheading">CTA visibility</p>
+              <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
               <p class="text-body">May compete with the primary CTA.</p>
             </li>
           </ul>
@@ -197,21 +179,105 @@
           <ul class="direction-points">
             <li class="direction-point">
               <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="section-subheading">Contextual</p>
-              <p class="text-body">Placed directly before the consolidation decision.</p>
+              <p class="text-body">Places UC data directly before the consolidation decision while keeping it distinct from the consolidation control.</p>
             </li>
             <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="section-subheading">Clear &amp; neutral</p>
-              <p class="text-body">Keeps UC data distinct from the consolidation control.</p>
-            </li>
-            <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">⚠&#xFE0E;</span>
-              <p class="section-subheading">Less persistent</p>
+              <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
               <p class="text-body">Only visible at the point of decision.</p>
             </li>
           </ul>
         </div>
+      </div>
+
+      <div class="case-content reveal reveal-after-lists">
+        <p class="text-body">
+          I proposed Direction 2 – the UC data compact card – to make UC data relevant at the point of decision without adding persistent UI. Together with the product team, we defined the final solution and took it into the A/B test.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section reveal-group">
+      <div class="case-content reveal reveal-after-lists">
+        <h2 class="text-title">Experiment</h2>
+
+        <p class="section-kicker">Hypothesis</p>
+        <p class="text-body">
+          We expected that showing users their existing loan information above the consolidation toggle would help them make a more informed decision and increase submitted applications with loan consolidation.
+        </p>
+
+        <p class="section-kicker">What we tested</p>
+        <div class="metric-row">
+          <div class="metric-item">
+            <p class="section-subheading">A/B test</p>
+            <p class="text-body">Original application vs. UC data card</p>
+          </div>
+          <div class="metric-item">
+            <p class="section-subheading">77 days</p>
+            <p class="text-body">15 Jul – 1 Oct 2025</p>
+          </div>
+          <div class="metric-item">
+            <p class="section-subheading">61,340</p>
+            <p class="text-body">total visitors</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-columns reveal reveal-after-lists">
+        <div class="compare-column">
+          <p class="section-kicker">Control</p>
+          <p class="text-body">Existing application</p>
+          <div
+            class="case-image case-image--placeholder"
+            role="img"
+            aria-label="Control: existing application"
+          ></div>
+        </div>
+        <div class="compare-column">
+          <p class="section-kicker">Variant</p>
+          <p class="text-body">UC data card above the loan consolidation toggle</p>
+          <div
+            class="case-image case-image--placeholder"
+            role="img"
+            aria-label="Variant: UC data card above the loan consolidation toggle"
+          ></div>
+        </div>
+      </div>
+
+      <div class="case-content reveal reveal-after-lists">
+        <p class="text-body">
+          Success metric: Submitted applications where users selected “collect loan = yes.”
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section reveal-group">
+      <div class="case-content reveal reveal-after-lists">
+        <h2 class="text-title">Results</h2>
+        <div class="impact-metrics">
+          <div class="impact-metric">
+            <p class="text-hero impact-metric-value">3.92%<span class="impact-arrow">→</span><span data-count-from="3.92" data-count-to="4.31" data-count-suffix="%">4.31%</span></p>
+            <p class="text-body">Consolidation conversion</p>
+          </div>
+          <div class="impact-metric">
+            <p class="text-hero impact-metric-value" data-count-to="10.06" data-count-prefix="+" data-count-suffix="%">+10.06%</p>
+            <p class="text-body">Relative difference</p>
+          </div>
+        </div>
+        <p class="text-body">
+          <span class="analysis-label">Primary analysis:</span> 86% statistical significance – below the CRO team’s 90% threshold.
+        </p>
+        <p class="text-body">
+          <span class="analysis-label">Supplementary analysis:</span> 96% statistical significance after swapping the baseline and variation, supporting the rollout recommendation.
+        </p>
+      </div>
+    </section>
+
+    <section class="case-section reveal-group">
+      <div class="case-content reveal">
+        <h2 class="text-title">Reflection</h2>
+        <p class="text-body">
+          The A/B test showed an impact, but not what drives the consolidation decision. A natural next step would be qualitative research to uncover users’ concerns, information needs, and decision factors.
+        </p>
       </div>
     </section>
   </main>
@@ -220,6 +286,6 @@
     <p class="text-small">© 2026 Lena Klimova. Designed & built with Cursor</p>
   </footer>
 
-  <script src="script.js?v=45"></script>
+  <script src="script.js?v=54"></script>
 </body>
 </html>
