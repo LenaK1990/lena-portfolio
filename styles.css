@@ -837,7 +837,7 @@ body.preload .direction-points .direction-point {
 
 .hypothesis-card h3 {
   color: var(--text-primary);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   margin: 0;
   text-align: left;
@@ -968,7 +968,7 @@ body.preload .direction-points .direction-point {
   margin: 0;
   color: var(--text-primary);
   font-family: var(--font-family);
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 500;
   line-height: 1.25;
 }
