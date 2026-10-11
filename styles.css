@@ -661,6 +661,7 @@ body.preload .direction-points .direction-point {
 }
 
 .case-content p.section-subheading {
+  font-size: 18px;
   line-height: var(--lh-heading);
 }
 
