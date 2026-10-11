@@ -360,4 +360,75 @@ document.addEventListener("DOMContentLoaded", () => {
       ungrouped.forEach((el) => observeAndAnimate(el, [el]));
     }
   }
+
+  const homeVideos = [...document.querySelectorAll(".home-preview video")];
+
+  if (homeVideos.length) {
+    const playHomeVideo = (video) => {
+      if (reducedMotion) {
+        video.pause();
+        return;
+      }
+      const play = video.play();
+      if (play && typeof play.catch === "function") play.catch(() => {});
+    };
+
+    if (reducedMotion) {
+      homeVideos.forEach((video) => video.pause());
+    } else if ("IntersectionObserver" in window) {
+      const homeVideoObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const video = entry.target.querySelector("video");
+            if (!video) return;
+            if (entry.isIntersecting) playHomeVideo(video);
+            else video.pause();
+          });
+        },
+        { threshold: 0.2 }
+      );
+      document.querySelectorAll(".home-preview:has(video)").forEach((card) => {
+        homeVideoObserver.observe(card);
+      });
+    } else {
+      homeVideos.forEach(playHomeVideo);
+    }
+  }
+
+  const directionVideos = [
+    ...document.querySelectorAll(".direction-rows video"),
+  ];
+
+  if (directionVideos.length) {
+    const playVisibleVideo = (video) => {
+      directionVideos.forEach((other) => {
+        if (other === video) return;
+        other.pause();
+      });
+
+      if (reducedMotion) return;
+
+      const play = video.play();
+      if (play && typeof play.catch === "function") {
+        play.catch(() => {});
+      }
+    };
+
+    if ("IntersectionObserver" in window) {
+      const videoObserver = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+          if (visible) playVisibleVideo(visible.target);
+        },
+        { threshold: [0.35, 0.6, 0.85] }
+      );
+
+      directionVideos.forEach((video) => videoObserver.observe(video));
+    } else if (!reducedMotion) {
+      playVisibleVideo(directionVideos[0]);
+    }
+  }
 });

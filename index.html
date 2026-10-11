@@ -8,27 +8,22 @@
   <!-- Google Fonts (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=113" />
 </head>
-<body class="preload">
+<body class="preload home">
 
   <nav class="nav">
     <a href="/lena-portfolio/" class="nav-logo">Lena Klimova</a>
   </nav>
 
-  <section class="hero reveal-group">
-    <img src="avatar.jpg" class="avatar reveal" alt="Lena Klimova" />
-    <h1 class="reveal text-hero">
-      Hi, I’m Lena – a product designer<br />
-      focused on financial decision flows<br />
-      in B2C mobile apps.
-    </h1>
-
-    <p class="subtext text-body reveal">
-      I design end-to-end product experiences – from research and testing to scalable, high-fidelity solutions.
-    </p>
-
-    <div class="buttons reveal">
+  <main class="home-shell">
+    <aside class="home-bio">
+      <img src="avatar.jpg" class="avatar" alt="Lena Klimova" />
+      <p class="text-small">Lena Klimova</p>
+      <p class="home-bio-role">Product designer focused on financial decision flows in B2C mobile apps.</p>
+      <p class="home-bio-sub">
+        I design end-to-end product experiences – from research and testing to scalable, high-fidelity solutions.
+      </p>
       <a href="https://www.linkedin.com/in/lena-klimova-8a553314b/" target="_blank" rel="noopener noreferrer" class="button">
         LinkedIn
         <svg viewBox="0 0 24 24" fill="none">
@@ -36,75 +31,42 @@
           <path d="M6.96484 16.4648L15.4648 7.96484" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
         </svg>
       </a>
+    </aside>
 
-      <a href="mailto:elenaklimova.elle@gmail.com" class="button">
-        Email
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M9.46484 6.96484L15.5359 6.96485C16.0882 6.96485 16.5359 7.41257 16.5359 7.96485L16.5359 14.0359" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <path d="M6.96484 16.4648L15.4648 7.96484" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-        </svg>
-      </a>
-    </div>
-  </section>
+    <div class="home-work">
 
-  <section class="cases">
-
-    <!-- CASE 1 -->
-    <div class="case reveal-group">
-      <div class="case-header reveal">
-        <h2 class="case-title text-title">Rethinking interest rate estimation</h2>
-
-        <div class="case-row">
-          <p class="case-subtext text-body">
-            Redesigned the interest rate estimation flow in Kreddy to surface value earlier, increasing adoption 3× and reducing drop-off by 60%.
+      <article class="home-entry case reveal-group">
+        <a href="case-irm-kreddy.html" class="home-entry-link reveal">
+          <div class="case-card home-preview">
+            <img src="images/case/irm/irm-cover.png?v=trim" alt="Interest rate estimation in Kreddy" class="home-preview-cover" />
+          </div>
+          <h2 class="home-entry-title">Making interest rate estimates easier to access</h2>
+          <p class="home-entry-subtext">
+            Redesigned the flow, reducing drop-off from 80% to 20% and increasing adoption 3x.
           </p>
-          <div class="case-year text-body">2024 – 2025</div>
-        </div>
-      </div>
+        </a>
+      </article>
 
-      <a href="case-irm-kreddy.html" class="case-card reveal">
-        <img src="case 1.jpg" alt="Kreddy App case preview" />
-        <div class="case-hover">
-          <span class="case-hover-btn">
-            View project
-            <span class="btn-icon">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                <path d="M14 7L18.2929 11.2929C18.6834 11.6834 18.6834 12.3166 18.2929 12.7071L14 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                <path d="M6 12L18 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-              </svg>
-            </span>
-          </span>
-        </div>
-      </a>
-    </div>
-
-    <!-- CASE 2 -->
-    <div class="case case--disabled reveal-group">
-      <div class="case-header reveal">
-        <h2 class="case-title text-title">
-          Designing a Personal Finance Hub for Logged-in Users
+      <article class="home-entry case reveal-group">
+        <div class="home-entry-link home-entry-static reveal">
+          <div class="case-card home-preview">
+            <video class="home-preview-cover" src="images/case/loan/uc-cover.mp4?v=h264" autoplay muted loop playsinline preload="auto" aria-label="Loan consolidation in Kreddy"></video>
+          </div>
+          <h2 class="home-entry-title">Helping users make informed loan consolidation decisions</h2>
           <span class="case-badge">Coming soon</span>
-        </h2>
-
-        <div class="case-row">
-          <p class="case-subtext text-body">
-            Designed and launched a personal finance hub from scratch, quickly reaching over 24K users and increasing engagement.
+          <p class="home-entry-subtext">
+            Brought existing loan data into the application, with a 10% difference in consolidation conversion.
           </p>
-          <div class="case-year text-body">2025 – 2026</div>
         </div>
-      </div>
+      </article>
 
-      <div class="case-card reveal">
-        <img src="case 2.jpg" alt="Next case preview" />
-      </div>
     </div>
-
-  </section>
+  </main>
 
   <footer class="footer reveal">
     <p class="text-small">© 2026 Lena Klimova. Designed & built with Cursor</p>
   </footer>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=57"></script>
 </body>
 </html>
