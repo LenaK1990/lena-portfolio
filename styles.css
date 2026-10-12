@@ -269,7 +269,7 @@ body.preload .direction-points .direction-point {
 
 .home-entry-link .case-badge {
   margin-top: 12px;
-  padding: 6px 14px;
+  padding: 4px 12px;
   background: #222222;
   color: var(--text-secondary);
 }
