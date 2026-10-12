@@ -337,7 +337,7 @@ body.preload .direction-points .direction-point {
   margin: 0 0 32px;
   color: var(--text-secondary);
   font-family: var(--font-family);
-  font-size: var(--text-body);
+  font-size: var(--text-small);
   font-weight: var(--weight-regular);
   line-height: var(--lh-body);
 }
