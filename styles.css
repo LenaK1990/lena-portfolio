@@ -307,7 +307,7 @@ body.preload .direction-points .direction-point {
 
 .home-bio {
   position: sticky;
-  top: 96px;
+  top: 48px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -350,8 +350,8 @@ body.preload .direction-points .direction-point {
 }
 
 .home-bio .button svg {
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
 }
 
 .home .footer {
