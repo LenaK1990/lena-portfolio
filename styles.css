@@ -131,58 +131,68 @@ body.preload .direction-points .direction-point {
   transform: translateY(8px);
 }
 
-  /* NAV */
-  
+  /* NAV: a small glass pill on case pages. The landing has no nav. */
+
   .nav {
-    position: sticky;
-    top: 0;
-    left: 0;
-    width: 100%;
+    position: relative;
     z-index: 1000;
     box-sizing: border-box;
-    height: 72px;
-    display: flex;
-    align-items: center;
-    padding: 0 48px;
-    font-weight: var(--weight-regular);
-    background: rgba(15, 15, 15, 0.35);
+    width: min(1100px, calc(100% - 40px));
+    height: 80px;
+    margin: 0 auto;
+    padding: 0;
+    background: transparent;
     border: none;
     box-shadow: none;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    transition: background 0.3s ease;
-  }
-
-  .nav.scrolled {
-    background: rgba(15, 15, 15, 0.4);
-  }
-
-  .nav::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -40px;
-    height: 40px;
-    background: linear-gradient(
-      to bottom,
-      rgba(15, 15, 15, 0.25),
-      rgba(15, 15, 15, 0.12),
-      rgba(15, 15, 15, 0)
-    );
     pointer-events: none;
   }
-  
+
   .nav-logo {
-    font-size: 16px;
-    color: inherit;
+    position: fixed;
+    top: 24px;
+    left: max(20px, calc(50vw - 530px));
+    z-index: 1000;
+    display: inline-flex;
+    align-items: center;
+    height: 44px;
+    padding: 0 16px;
+    border-radius: 999px;
+    font-size: 14px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #fff;
     text-decoration: none;
     cursor: pointer;
-    transition: opacity 0.2s ease;
+    pointer-events: auto;
+    background: rgba(207, 207, 207, 0.11);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    box-shadow: none;
+    transition:
+      transform 140ms cubic-bezier(0.23, 1, 0.32, 1),
+      background-color 140ms ease;
   }
 
   .nav-logo:hover {
-    opacity: 0.8;
+    background: rgba(207, 207, 207, 0.18);
+  }
+
+  .nav-logo:active {
+    transform: scale(0.97);
+  }
+
+  @media (prefers-reduced-transparency: reduce) {
+    .nav-logo {
+      background: #2a2a2a;
+      -webkit-backdrop-filter: none;
+      backdrop-filter: none;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav-logo:active {
+      transform: none;
+    }
   }
 
   /* HOME: work column + sticky bio */
@@ -462,7 +472,7 @@ body.preload .direction-points .direction-point {
 .case-page {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 96px 20px 80px;
+  padding: 20px 20px 80px;
   overflow-x: clip;
 }
 
@@ -1569,7 +1579,12 @@ a.case-card:hover .case-hover-btn {
 
 @media (max-width: 900px) {
   .nav {
-    padding: 0 24px;
+    height: 72px;
+    padding: 0;
+  }
+
+  .nav-logo {
+    top: 16px;
   }
 
   .home-shell {
@@ -1587,7 +1602,7 @@ a.case-card:hover .case-hover-btn {
   }
 
   .case-page {
-    padding-top: 72px;
+    padding-top: 20px;
     padding-bottom: 64px;
   }
 
@@ -1682,8 +1697,14 @@ a.case-card:hover .case-hover-btn {
   }
 
   .nav {
-    height: 64px;
-    padding: 0 16px;
+    width: calc(100% - 32px);
+    height: 68px;
+    padding: 0;
+  }
+
+  .nav-logo {
+    top: 16px;
+    left: 16px;
   }
 
   .home-shell {
@@ -1735,7 +1756,7 @@ a.case-card:hover .case-hover-btn {
   }
 
   .case-page {
-    padding: 48px 16px 56px;
+    padding: 24px 16px 56px;
   }
 
   .case-section {
