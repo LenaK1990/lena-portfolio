@@ -365,10 +365,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (homeVideos.length) {
     const coverFit = {
-      "irm-card-cover": { fraction: 0.8778, center: 0.5 },
-      "uc-card-cover": { fraction: 0.8778, center: 0.5 },
+      "irm-card-cover": { fraction: 0.8778, center: 0.5, x0: 0.3844, x1: 0.6156, y0: 0.0611, y1: 0.9389 },
+      "uc-card-cover": { fraction: 0.8778, center: 0.5, x0: 0.3823, x1: 0.6177, y0: 0.0611, y1: 0.9389 },
     };
     const coverFill = 0.965;
+    const phoneRadius = 62 / 403;
 
     const fitHomeCovers = () => {
       const dpr = window.devicePixelRatio || 1;
@@ -387,9 +388,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const videoHeight = snap((coverFill / spec.fraction) * mediaRect.height);
         const videoWidth = snap(videoHeight * (16 / 9));
         const shift = (0.5 - spec.center) * videoHeight;
-        // The measured edge includes a light rim under the solid bezel.
-        // Half of it shifts the phone down so the card gaps stay equal.
-        const rim = snap(videoHeight * 0.0046);
 
         video.style.width = `${videoWidth}px`;
         video.style.height = `${videoHeight}px`;
@@ -398,7 +396,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const placed = video.getBoundingClientRect();
         const targetTop = snap(
-          mediaRect.top + (mediaRect.height - videoHeight) / 2 + shift + rim / 2
+          mediaRect.top + (mediaRect.height - videoHeight) / 2 + shift
         );
         const targetLeft = snap(
           mediaRect.left + (mediaRect.width - videoWidth) / 2
@@ -406,11 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.top = `${targetTop - placed.top}px`;
         video.style.left = `${targetLeft - placed.left}px`;
 
-        const phoneBottom = spec.center + spec.fraction / 2;
-        const videoTopInMedia = (mediaRect.height - videoHeight) / 2 + shift + rim / 2;
-        const gapBelowPhone =
-          mediaRect.height - (videoTopInMedia + phoneBottom * videoHeight) + rim;
-        media.style.setProperty("--phone-gap", `${Math.max(0, snap(gapBelowPhone))}px`);
+        const radius = snap((spec.x1 - spec.x0) * videoWidth * phoneRadius);
+        video.style.clipPath = `inset(${spec.y0 * 100}% ${(1 - spec.x1) * 100}% ${(1 - spec.y1) * 100}% ${spec.x0 * 100}% round ${radius}px)`;
       });
     };
 

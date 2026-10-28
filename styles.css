@@ -257,27 +257,12 @@ body.preload .direction-points .direction-point {
 }
 
 .home-preview-media {
-  position: relative;
   min-width: 0;
   min-height: 0;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-/* Both recordings leave a light rim just under the bezel.
-   Cover that rim and the gap beneath it with the card color. */
-.home-preview-media:has(video.home-preview-cover)::after {
-  content: "";
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--phone-gap, 0px);
-  background: var(--surface-fill);
-  pointer-events: none;
 }
 
 .home .case-card.home-preview video.home-preview-cover {
