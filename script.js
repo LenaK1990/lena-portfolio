@@ -364,6 +364,50 @@ document.addEventListener("DOMContentLoaded", () => {
   const homeVideos = [...document.querySelectorAll(".home-preview video")];
 
   if (homeVideos.length) {
+    const coverFit = {
+      "irm-card-cover": { fraction: 0.8778, center: 0.5 },
+      "uc-card-cover": { fraction: 0.8778, center: 0.5 },
+    };
+    const coverFill = 0.965;
+
+    const fitHomeCovers = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const snap = (value) => Math.round(value * dpr) / dpr;
+
+      homeVideos.forEach((video) => {
+        const media = video.parentElement;
+        if (!media) return;
+        const source = video.currentSrc || video.getAttribute("src") || "";
+        const spec = source.includes("uc-card-cover")
+          ? coverFit["uc-card-cover"]
+          : coverFit["irm-card-cover"];
+        const mediaRect = media.getBoundingClientRect();
+        if (!mediaRect.height) return;
+
+        const videoHeight = snap((coverFill / spec.fraction) * mediaRect.height);
+        const videoWidth = snap(videoHeight * (16 / 9));
+        const shift = (0.5 - spec.center) * videoHeight;
+
+        video.style.width = `${videoWidth}px`;
+        video.style.height = `${videoHeight}px`;
+        video.style.left = "0px";
+        video.style.top = "0px";
+
+        const placed = video.getBoundingClientRect();
+        const targetTop = snap(
+          mediaRect.top + (mediaRect.height - videoHeight) / 2 + shift
+        );
+        const targetLeft = snap(
+          mediaRect.left + (mediaRect.width - videoWidth) / 2
+        );
+        video.style.top = `${targetTop - placed.top}px`;
+        video.style.left = `${targetLeft - placed.left}px`;
+      });
+    };
+
+    fitHomeCovers();
+    window.addEventListener("resize", fitHomeCovers);
+
     const playHomeVideo = (video) => {
       if (reducedMotion) {
         video.pause();

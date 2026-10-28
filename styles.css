@@ -248,24 +248,44 @@ body.preload .direction-points .direction-point {
   pointer-events: none;
 }
 
-.home .case-card.home-preview:has(video.home-preview-cover) {
+.home .case-card.home-preview:has(.home-preview-cover) {
+  padding: 32px 20px;
+}
+
+.home .case-card.home-preview:has(.home-preview-media) {
+  display: grid;
+}
+
+.home-preview-media {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 }
 
 .home .case-card.home-preview video.home-preview-cover {
+  position: relative;
   width: auto;
-  height: 139%;
   max-width: none;
   flex: 0 0 auto;
   object-fit: fill;
-  transform: translateY(12px);
+  left: 0;
+  top: 0;
 }
 
-.home .case-card.home-preview:has(.home-preview-cover) {
-  padding: 48px 20px;
+/* Phone occupies a different slice of each 16:9 frame. Scale and shift
+   so both devices match in height and sit centered in the card.
+   script.js snaps these to device pixels so the picture is not resampled. */
+.home .case-card.home-preview video.home-preview-cover[src*="irm-card-cover"] {
+  height: 109.93%;
+  top: 0;
+}
+
+.home .case-card.home-preview video.home-preview-cover[src*="uc-card-cover"] {
+  height: 109.93%;
+  top: 0;
 }
 
 .home-entry-title {
