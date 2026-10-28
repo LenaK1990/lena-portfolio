@@ -387,6 +387,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const videoHeight = snap((coverFill / spec.fraction) * mediaRect.height);
         const videoWidth = snap(videoHeight * (16 / 9));
         const shift = (0.5 - spec.center) * videoHeight;
+        // The measured edge includes a light rim under the solid bezel.
+        // Half of it shifts the phone down so the card gaps stay equal.
+        const rim = snap(videoHeight * 0.0046);
 
         video.style.width = `${videoWidth}px`;
         video.style.height = `${videoHeight}px`;
@@ -395,7 +398,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const placed = video.getBoundingClientRect();
         const targetTop = snap(
-          mediaRect.top + (mediaRect.height - videoHeight) / 2 + shift
+          mediaRect.top + (mediaRect.height - videoHeight) / 2 + shift + rim / 2
         );
         const targetLeft = snap(
           mediaRect.left + (mediaRect.width - videoWidth) / 2
@@ -403,12 +406,11 @@ document.addEventListener("DOMContentLoaded", () => {
         video.style.top = `${targetTop - placed.top}px`;
         video.style.left = `${targetLeft - placed.left}px`;
 
-        if (source.includes("uc-card-cover")) {
-          const phoneBottom = spec.center + spec.fraction / 2;
-          const videoTopInMedia = (mediaRect.height - videoHeight) / 2 + shift;
-          const gapBelowPhone = mediaRect.height - (videoTopInMedia + phoneBottom * videoHeight);
-          media.style.setProperty("--phone-gap", `${Math.max(0, snap(gapBelowPhone))}px`);
-        }
+        const phoneBottom = spec.center + spec.fraction / 2;
+        const videoTopInMedia = (mediaRect.height - videoHeight) / 2 + shift + rim / 2;
+        const gapBelowPhone =
+          mediaRect.height - (videoTopInMedia + phoneBottom * videoHeight) + rim;
+        media.style.setProperty("--phone-gap", `${Math.max(0, snap(gapBelowPhone))}px`);
       });
     };
 

@@ -266,9 +266,9 @@ body.preload .direction-points .direction-point {
   justify-content: center;
 }
 
-/* The loan recording's shadow stays near-black under the phone.
-   Cover just that gap with the card color. The phone itself stays clear. */
-.home-preview-media:has(video[src*="uc-card-cover"])::after {
+/* Both recordings leave a light rim just under the bezel.
+   Cover that rim and the gap beneath it with the card color. */
+.home-preview-media:has(video.home-preview-cover)::after {
   content: "";
   position: absolute;
   z-index: 1;
