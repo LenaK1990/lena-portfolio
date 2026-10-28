@@ -402,6 +402,13 @@ document.addEventListener("DOMContentLoaded", () => {
         );
         video.style.top = `${targetTop - placed.top}px`;
         video.style.left = `${targetLeft - placed.left}px`;
+
+        if (source.includes("uc-card-cover")) {
+          const phoneBottom = spec.center + spec.fraction / 2;
+          const videoTopInMedia = (mediaRect.height - videoHeight) / 2 + shift;
+          const gapBelowPhone = mediaRect.height - (videoTopInMedia + phoneBottom * videoHeight);
+          media.style.setProperty("--phone-gap", `${Math.max(0, snap(gapBelowPhone))}px`);
+        }
       });
     };
 
