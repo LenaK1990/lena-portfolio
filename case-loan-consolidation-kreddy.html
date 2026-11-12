@@ -8,7 +8,7 @@
   <!-- Google Fonts (Inter) -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="styles.css?v=58" />
+  <link rel="stylesheet" href="styles.css?v=158" />
 </head>
 <body class="preload">
 
@@ -58,7 +58,10 @@
           </div>
         </div>
       </div>
-      <div class="hero-image hero-image--placeholder reveal" role="img" aria-label="Case study preview"></div>
+      <div class="hero-image previous-experience reveal">
+        <img src="images/case/loan/final-design/main-screen.png?v=2" alt="Final loan application main screen" />
+        <img src="images/case/loan/final-design/bottom-sheet-1.png?v=1" alt="Final loan application bottom sheet" />
+      </div>
     </section>
 
     <section class="case-section reveal-group">
@@ -66,28 +69,12 @@
 
         <h2 class="text-title">Product context</h2>
         <p class="text-body">
-          Kreddy is a B2C personal finance app that helps users understand their credit score, loans, and overall financial health. Its consumer loan application allows users to consolidate existing loans when applying for a new loan.
+          Kreddy is a B2C personal finance app that helps users understand their credit score, existing loans, and overall financial health. Its loan application allows users to consolidate existing loans when applying for a new one.
         </p>
         <p class="text-body">
-          Kreddy uses data from UC across the app, and we worked with UC on requirements for this experience. It’s a Swedish provider of credit and consumer data used in financial decision-making.
+          The app uses credit and consumer data from UC, a Swedish data provider. We collaborated with UC to define the data requirements for this experience.
         </p>
 
-      </div>
-    </section>
-
-    <section class="case-section reveal-group">
-      <div class="case-content reveal">
-
-        <h2 class="text-title">Challenge</h2>
-        <p class="text-body">
-          Kreddy already showed users their credit score and existing loans across the app, but not at the point of deciding whether to consolidate. The challenge was to bring this information into the loan application without disrupting the existing flow or making consolidation feel mandatory.
-        </p>
-
-      </div>
-
-      <div class="case-block reveal">
-        <p class="text-small case-label">Existing experience</p>
-        <div class="case-image case-image--placeholder" role="img" aria-label="Existing experience placeholder"></div>
       </div>
     </section>
 
@@ -105,31 +92,52 @@
     <section class="case-section reveal-group">
       <div class="case-content reveal">
 
-        <h2 class="text-title">Constraints</h2>
+        <h2 class="text-title">Challenge</h2>
         <p class="text-body">
-          The challenge was not only about making the information visible. I also had to work within existing product, data, and regulatory constraints.
+          Users could already view their credit score and existing loans in the app, but this information wasn't available when they made the consolidation decision.
         </p>
-        <ul class="case-list">
-          <li>Surface UC financial information – credit score and registered debts and credits.</li>
-          <li>Respect consolidation rules – mortgages and student loans could be shown, but not consolidated.</li>
-          <li>Keep information relevant regardless of intent – visible whether or not users planned to consolidate.</li>
-          <li>Keep consolidation optional – no copy or CTAs encouraging consolidation.</li>
-          <li>Work within the existing application flow – without fundamentally changing how users move through it.</li>
-        </ul>
+        <p class="text-body">
+          The challenge was to bring relevant financial information into the loan application without disrupting the existing flow or making consolidation feel mandatory.
+        </p>
 
+      </div>
+
+      <div class="case-block reveal">
+        <p class="text-small case-label">Previous experience</p>
+        <div class="case-image previous-experience">
+          <img src="images/case/loan/previous-experience/credit-score.png?v=3" alt="Credit score screen" />
+          <img src="images/case/loan/previous-experience/merge-loans.png?v=3" alt="Merge loans screen without UC data" />
+          <img src="images/case/loan/previous-experience/loans-credits.png?v=3" alt="Loans and credits screen" />
+        </div>
       </div>
     </section>
 
     <section class="case-section reveal-group">
       <div class="case-content reveal">
+
+        <h2 class="text-title">Constraints</h2>
+        <ul class="case-list">
+          <li>Show relevant UC financial data, including mortgages, while keeping mortgage information separate from loans that can be consolidated.</li>
+          <li>Keep consolidation optional and neutral, without encouraging users to consolidate.</li>
+          <li>Preserve the existing application flow without fundamentally changing its structure.</li>
+        </ul>
+
+      </div>
+    </section>
+
+    <section class="case-section case-section--visual reveal-group">
+      <div class="case-content reveal">
         <h2 class="text-title">Early exploration</h2>
         <p class="text-body">
-          I explored different ways to bring the information into the first step of the application, testing how much could be added while keeping the existing structure and logic.
+          I explored bringing UC credit data into the first application step. However, making the information conditional on the consolidation toggle introduced additional interaction logic into the existing form.
         </p>
       </div>
 
       <div class="case-block reveal">
-        <div class="case-image case-image--placeholder" role="img" aria-label="Early exploration sketches placeholder"></div>
+        <div class="case-image case-image--clear early-exploration">
+          <img src="images/case/loan/early-exploration/01-initial-state.png?v=2" alt="Early exploration initial state" />
+          <img src="images/case/loan/early-exploration/01-active-state.png?v=2" alt="Early exploration active state" />
+        </div>
       </div>
     </section>
 
@@ -141,51 +149,63 @@
         </p>
       </div>
 
-      <div class="case-cards reveal">
-        <div class="direction-column">
-          <div class="case-card">
-            <div class="case-card-content">
-              <h3 class="card-title">Sticky UC data banner</h3>
-            </div>
-            <div
-              class="case-card-media"
-              role="img"
-              aria-label="Sticky UC data banner prototype placeholder"
-            ></div>
+      <div class="case-cards direction-rows reveal">
+        <div class="direction-row">
+          <div class="direction-copy">
+            <h3 class="card-title">Sticky UC data banner</h3>
+            <ul class="direction-points">
+              <li class="direction-point">
+                <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+                <p class="text-body">Stays outside the main form flow and remains accessible throughout the journey</p>
+              </li>
+              <li class="direction-point">
+                <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
+                <p class="text-body">May compete with the primary CTA and take up valuable screen real estate</p>
+              </li>
+            </ul>
           </div>
-          <ul class="direction-points">
-            <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="text-body">Stays outside the main form flow and remains accessible throughout the journey.</p>
-            </li>
-            <li class="direction-point">
-              <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
-              <p class="text-body">May compete with the primary CTA.</p>
-            </li>
-          </ul>
+          <div class="case-card">
+            <div class="case-card-media">
+              <video
+                src="images/case/loan/sticky-uc-banner.mp4?v=update"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Sticky UC data banner prototype"
+              ></video>
+            </div>
+          </div>
         </div>
 
-        <div class="direction-column">
-          <div class="case-card">
-            <div class="case-card-content">
-              <h3 class="card-title">UC data compact card</h3>
-            </div>
-            <div
-              class="case-card-media"
-              role="img"
-              aria-label="UC data compact card prototype placeholder"
-            ></div>
+        <div class="direction-row">
+          <div class="direction-copy">
+            <h3 class="card-title">Compact UC data card</h3>
+            <ul class="direction-points">
+              <li class="direction-point">
+                <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
+                <p class="text-body">Places UC data directly before the consolidation decision while keeping it distinct from the consolidation control</p>
+              </li>
+              <li class="direction-point">
+                <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
+                <p class="text-body">Only visible at the point of decision</p>
+              </li>
+            </ul>
           </div>
-          <ul class="direction-points">
-            <li class="direction-point">
-              <span class="direction-point-icon" aria-hidden="true">✓&#xFE0E;</span>
-              <p class="text-body">Places UC data directly before the consolidation decision while keeping it distinct from the consolidation control.</p>
-            </li>
-            <li class="direction-point">
-              <span class="direction-point-icon direction-point-icon--warn" aria-hidden="true">⚠&#xFE0E;</span>
-              <p class="text-body">Only visible at the point of decision.</p>
-            </li>
-          </ul>
+          <div class="case-card">
+            <div class="case-card-media">
+              <video
+                src="images/case/loan/compact-uc-card.mp4?v=update"
+                autoplay
+                muted
+                loop
+                playsinline
+                preload="metadata"
+                aria-label="Compact UC data card prototype"
+              ></video>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -197,78 +217,68 @@
     </section>
 
     <section class="case-section reveal-group">
-      <div class="case-content reveal reveal-after-lists">
-        <h2 class="text-title">Experiment</h2>
-
-        <p class="section-kicker">Hypothesis</p>
-        <p class="text-body">
-          We expected that showing users their existing loan information above the consolidation toggle would help them make a more informed decision and increase submitted applications with loan consolidation.
-        </p>
-
-        <p class="section-kicker">What we tested</p>
-        <div class="metric-row">
-          <div class="metric-item">
-            <p class="section-subheading">A/B test</p>
-            <p class="text-body">Original application vs. UC data card</p>
-          </div>
-          <div class="metric-item">
-            <p class="section-subheading">77 days</p>
-            <p class="text-body">15 Jul – 1 Oct 2025</p>
-          </div>
-          <div class="metric-item">
-            <p class="section-subheading">61,340</p>
-            <p class="text-body">total visitors</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="compare-columns reveal reveal-after-lists">
-        <div class="compare-column">
-          <p class="section-kicker">Control</p>
-          <p class="text-body">Existing application</p>
-          <div
-            class="case-image case-image--placeholder"
-            role="img"
-            aria-label="Control: existing application"
-          ></div>
-        </div>
-        <div class="compare-column">
-          <p class="section-kicker">Variant</p>
-          <p class="text-body">UC data card above the loan consolidation toggle</p>
-          <div
-            class="case-image case-image--placeholder"
-            role="img"
-            aria-label="Variant: UC data card above the loan consolidation toggle"
-          ></div>
-        </div>
-      </div>
-
-      <div class="case-content reveal reveal-after-lists">
-        <p class="text-body">
-          Success metric: Submitted applications where users selected “collect loan = yes.”
-        </p>
-      </div>
-    </section>
-
-    <section class="case-section reveal-group">
-      <div class="case-content reveal reveal-after-lists">
+      <div class="case-content experiment reveal">
         <h2 class="text-title">Results</h2>
-        <div class="impact-metrics">
-          <div class="impact-metric">
-            <p class="text-hero impact-metric-value">3.92%<span class="impact-arrow">→</span><span data-count-from="3.92" data-count-to="4.31" data-count-suffix="%">4.31%</span></p>
+
+        <div class="experiment-metrics">
+          <div class="experiment-metric">
+            <p class="experiment-figure">3.92%<span class="impact-arrow">→</span><span data-count-from="3.92" data-count-to="4.31" data-count-suffix="%">4.31%</span></p>
             <p class="text-body">Consolidation conversion</p>
           </div>
-          <div class="impact-metric">
-            <p class="text-hero impact-metric-value" data-count-to="10.06" data-count-prefix="+" data-count-suffix="%">+10.06%</p>
-            <p class="text-body">Relative difference</p>
+          <div class="experiment-metric">
+            <p class="experiment-figure"><span data-count-to="10.06" data-count-prefix="+" data-count-suffix="%">+10.06%</span></p>
+            <p class="text-body">relative difference</p>
           </div>
         </div>
-        <p class="text-body">
-          <span class="analysis-label">Primary analysis:</span> 86% statistical significance – below the CRO team’s 90% threshold.
-        </p>
-        <p class="text-body">
-          <span class="analysis-label">Supplementary analysis:</span> 96% statistical significance after swapping the baseline and variation, supporting the rollout recommendation.
-        </p>
+
+        <div class="experiment-body">
+          <p class="text-body">
+            We expected that showing users their existing loan information above the consolidation toggle would help them make a more informed decision and increase submitted applications with loan consolidation.
+          </p>
+
+          <div class="experiment-details" id="experiment-details" hidden>
+            <div class="experiment-meta">
+              <div class="experiment-fact">
+                <p class="section-subheading">A/B test</p>
+                <p class="text-body">Original application vs. UC data card</p>
+              </div>
+              <div class="experiment-fact">
+                <p class="section-subheading">77 days</p>
+                <p class="text-body">15 Mar – 31 May 2026</p>
+              </div>
+              <div class="experiment-fact">
+                <p class="section-subheading">61,340</p>
+                <p class="text-body">total visitors</p>
+              </div>
+            </div>
+
+            <div class="experiment-fact">
+              <p class="section-subheading">Success metric</p>
+              <p class="text-body">Submitted applications where users selected “collect loan = yes.”</p>
+            </div>
+
+            <div class="experiment-fact">
+              <p class="section-subheading">Experiment note</p>
+              <div class="experiment-notes">
+                <p class="text-body">
+                  Primary analysis: 86% statistical significance — below the CRO team’s 90% threshold.
+                </p>
+                <p class="text-body">
+                  Supplementary analysis: 96% statistical significance after swapping the baseline and variation, supporting the rollout recommendation.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" class="experiment-toggle" aria-expanded="false" aria-controls="experiment-details">
+          <span class="experiment-toggle-icon" aria-hidden="true">
+            <svg preserveAspectRatio="none" overflow="visible" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 9L12 15L18 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span class="experiment-toggle-label">More details</span>
+        </button>
       </div>
     </section>
 
@@ -286,6 +296,6 @@
     <p class="text-small">© 2026 Lena Klimova. Designed & built with Cursor</p>
   </footer>
 
-  <script src="script.js?v=54"></script>
+  <script src="script.js?v=60"></script>
 </body>
 </html>

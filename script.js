@@ -479,4 +479,60 @@ document.addEventListener("DOMContentLoaded", () => {
       playVisibleVideo(directionVideos[0]);
     }
   }
+
+  const navLogo = document.querySelector(".nav-logo");
+  if (navLogo) {
+    let lastY = window.scrollY;
+    let ticking = false;
+    let idleTimer = 0;
+
+    const showNavLogo = () => navLogo.classList.remove("is-away");
+    const hideNavLogo = () => {
+      if (document.activeElement === navLogo) return;
+      navLogo.classList.add("is-away");
+    };
+
+    const updateNavLogo = () => {
+      ticking = false;
+      const y = window.scrollY;
+      const goingDown = y > lastY + 4;
+      const goingUp = y < lastY - 4;
+      lastY = y;
+
+      window.clearTimeout(idleTimer);
+
+      if (y <= 48 || goingUp) {
+        showNavLogo();
+        return;
+      }
+
+      if (goingDown) hideNavLogo();
+      idleTimer = window.setTimeout(showNavLogo, 700);
+    };
+
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        requestAnimationFrame(updateNavLogo);
+      },
+      { passive: true }
+    );
+
+    navLogo.addEventListener("focus", showNavLogo);
+  }
+
+  document.querySelectorAll(".experiment-toggle").forEach((button) => {
+    const panel = document.getElementById(button.getAttribute("aria-controls"));
+    const label = button.querySelector(".experiment-toggle-label");
+    if (!panel || !label) return;
+
+    button.addEventListener("click", () => {
+      const open = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!open));
+      panel.hidden = open;
+      label.textContent = open ? "More details" : "Hide";
+    });
+  });
 });
